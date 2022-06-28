@@ -1,15 +1,19 @@
-#include "Header.h"
-
-
+#include "Creature.h"
+#include "Manager.h"
+#include "Map.h"
+sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
 
 int main(int artv, char** argc)
 {
-    
+    Map M1("map.png", 1);
     sf::Clock clock;
+<<<<<<< HEAD
 
 
     Map M1("map.png", 1);
 
+=======
+>>>>>>> 2db793d707db5c2e95e71517da874a640a623d45
     while (window.isOpen())
     {
         float time = clock.getElapsedTime().asMicroseconds();
@@ -24,6 +28,7 @@ int main(int artv, char** argc)
                 window.close();
         }
         window.clear();
+<<<<<<< HEAD
 
         for (int i = 0; i < M1.Get_HEIGHT_MAP(); i++)
             for (int j = 0; j < M1.Get_WIDTH_MAP(); j++)
@@ -37,6 +42,9 @@ int main(int artv, char** argc)
 
                 window.draw(M1.s_map);//рисуем квадратики на экран
             }
+=======
+        M1.Print();
+>>>>>>> 2db793d707db5c2e95e71517da874a640a623d45
 
         window.display();
     }

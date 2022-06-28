@@ -1,8 +1,9 @@
 #pragma once
-#include <SFML\Graphics.hpp>
-#include "Header.h"
-//#include <SFML/Window.hpp>
-using namespace sf;
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
+
+extern sf::RenderWindow window;
+
 class Map
 {
 private:
@@ -42,11 +43,11 @@ public:
 	//sf::Texture texture;
 	sf::Sprite s_map;
 	Map(sf::String F, int x) {
-		Image map_image;
+		sf::Image map_image;
 		map_image.loadFromFile(F);
-		Texture map;
+		sf::Texture map;
 		map.loadFromImage(map_image);
-		Sprite _s_map;
+		sf::Sprite _s_map;
 		_s_map.setTexture(map);
 		s_map = _s_map;
 
@@ -67,9 +68,9 @@ public:
 		for (int i = 0; i < HEIGHT_MAP; i++)
 			for (int j = 0; j < WIDTH_MAP; j++)
 			{
-				if (TileMap[i][j] == ' ')  s_map.setTextureRect(IntRect(0, 0, 32, 32));
-				if (TileMap[i][j] == 's')  s_map.setTextureRect(IntRect(32, 0, 32, 32));
-				if ((TileMap[i][j] == '0')) s_map.setTextureRect(IntRect(64, 0, 32, 32));
+				if (TileMap[i][j] == ' ')  s_map.setTextureRect(sf::IntRect(0, 0, 32, 32));
+				if (TileMap[i][j] == 's')  s_map.setTextureRect(sf::IntRect(32, 0, 32, 32));
+				if ((TileMap[i][j] == '0')) s_map.setTextureRect(sf::IntRect(64, 0, 32, 32));
 
 				s_map.setPosition(j * 32, i * 32);
 
