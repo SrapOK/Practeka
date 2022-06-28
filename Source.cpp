@@ -24,6 +24,9 @@ int main(int artv, char** argc)
                 window.close();
         }
         window.clear();
+
+        Map M1("map.png", 1);
+
         window.display();
     }
 	return 0;
