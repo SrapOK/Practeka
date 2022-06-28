@@ -1,5 +1,4 @@
 #pragma once
-#ifndef HEADER_H
 
 #include <string>
 #include <iostream>
@@ -8,7 +7,11 @@
 #include <algorithm>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-#include "Creature.h"
 
-sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
-#endif // HEADER_H
+class Animation
+{
+private:
+	sf::Image image;
+
+};
+

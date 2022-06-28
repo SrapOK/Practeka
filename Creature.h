@@ -1,6 +1,12 @@
 #pragma once
-#include "Manager.h"
-#include "Header.h"
+
+#include <string>
+#include <iostream>
+#include <list>
+#include <forward_list>
+#include <algorithm>
+#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 
 class Creature
 {
@@ -13,7 +19,7 @@ protected:
 	int _width, _height;
 	short _current_frame;
 public:
-	Creature(std::string __path, int __x, int __y, int __width, int __height) : _path(__path), _x(__x), _y(__y), _width(__width), _height(__height), _current_frame(0){};
+	Creature(std::string __path, int __x, int __y, int __width, int __height);
 	int x(void);
 	int y(void);
 	double dx(void);

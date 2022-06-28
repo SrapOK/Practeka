@@ -8,6 +8,8 @@ int main(int artv, char** argc)
     sf::Clock clock;
 
 
+
+
     while (window.isOpen())
     {
         float time = clock.getElapsedTime().asMicroseconds();
@@ -22,7 +24,6 @@ int main(int artv, char** argc)
                 window.close();
         }
         window.clear();
-        manager.print();
         window.display();
     }
 	return 0;
