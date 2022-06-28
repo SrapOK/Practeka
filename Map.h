@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML\Graphics.hpp>
-#include <SFML/Window.hpp>
+#include "Header.h"
+//#include <SFML/Window.hpp>
 using namespace sf;
 class Map
 {
@@ -42,7 +43,7 @@ public:
 	sf::Sprite s_map;
 	Map(sf::String F, int x) {
 		Image map_image;
-		map_image.loadFromFile("F");
+		map_image.loadFromFile(F);
 		Texture map;
 		map.loadFromImage(map_image);
 		Sprite _s_map;
@@ -62,7 +63,7 @@ public:
 	int Get_WIDTH_MAP() {
 		return WIDTH_MAP;
 	}
-	void Print() {
+	/*void Print() {
 		for (int i = 0; i < HEIGHT_MAP; i++)
 			for (int j = 0; j < WIDTH_MAP; j++)
 			{
@@ -74,6 +75,6 @@ public:
 
 				window.draw(s_map);
 			}
-	}
+	}*/
 };
 
