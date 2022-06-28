@@ -1,7 +1,7 @@
 #include "Creature.h"
 #include "Manager.h"
 #include "Map.h"
-sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+sf::RenderWindow window(sf::VideoMode(1920, 400), "My window");
 
 int main(int artv, char** argc)
 {
@@ -14,7 +14,7 @@ int main(int artv, char** argc)
     //_s_map.setTexture(map);
 
 
-    Map M1("map.png", 1);
+    Map M1("Gameboy Tileset.png", 2);
     sf::Clock clock;
     while (window.isOpen())
     {
