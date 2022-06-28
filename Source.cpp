@@ -14,7 +14,7 @@ int main(int artv, char** argc)
     {
         float time = clock.getElapsedTime().asMicroseconds();
         clock.restart();
-        time = time / 700;
+        time = time / 800;
 
 
         sf::Event event;
