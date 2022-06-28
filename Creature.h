@@ -1,3 +1,5 @@
+#ifndef CREATURE_H
+#define CREATURE_H
 #pragma once
 
 #include <string>
@@ -7,6 +9,8 @@
 #include <algorithm>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+
+extern sf::RenderWindow window;
 
 class Creature
 {
@@ -29,4 +33,6 @@ public:
 	const sf::Sprite& sprite(void);
 	void update(float);
 };
+
+#endif // !CREATURE_H
 
