@@ -45,15 +45,18 @@ public:
 	//sf::Image image;
 	//sf::Texture texture;
 	sf::Sprite s_map;
+	sf::Image map_image;
+	sf::Texture map;
+	sf::Sprite _s_map;
 	Map(std::string F, int x) {
 		File = F;
-		sf::Image map_image;
+		
 		map_image.loadFromFile(File);
-		sf::Texture map;
+		
 		map.loadFromImage(map_image);
-		sf::Sprite _s_map;
-		_s_map.setTexture(map);
-		s_map = _s_map;
+		
+		s_map.setTexture(map);
+		//s_map = _s_map;
 		//s_map.setTextureRect(sf::IntRect(0, 0, 32, 32));
 		//window.draw(s_map);
 		//s_map.setPosition(92, 92);
