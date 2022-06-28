@@ -1,14 +1,16 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <iostream>
+//#include <string>
 
 extern sf::RenderWindow window;
 
 class Map
 {
 private:
-	int HEIGHT_MAP = 25;
-	int WIDTH_MAP = 40;
+	const int HEIGHT_MAP = 25;
+	const int WIDTH_MAP = 40;
 	sf::String TileMap[25] = {
 	"0000000000000000000000000000000000000000",
 	"0                                      0",
@@ -38,20 +40,25 @@ private:
 	};
 public:
 
-	sf::String File;
+
+	std::string File;
 	//sf::Image image;
 	//sf::Texture texture;
 	sf::Sprite s_map;
-	Map(sf::String F, int x) {
+	Map(std::string F, int x) {
+		File = F;
 		sf::Image map_image;
-		map_image.loadFromFile(F);
+		map_image.loadFromFile(File);
 		sf::Texture map;
 		map.loadFromImage(map_image);
 		sf::Sprite _s_map;
 		_s_map.setTexture(map);
 		s_map = _s_map;
-
-		File = F;
+		//s_map.setTextureRect(sf::IntRect(0, 0, 32, 32));
+		//window.draw(s_map);
+		//s_map.setPosition(92, 92);
+		//window.draw(s_map);
+		
 
 	}
 
@@ -65,6 +72,9 @@ public:
 		return WIDTH_MAP;
 	}
 	void Print() {
+		//s_map.setTextureRect(sf::IntRect(0, 0, 32, 32));
+		//window.draw(s_map);
+		//s_map.setPosition(32, 32);
 		for (int i = 0; i < HEIGHT_MAP; i++)
 			for (int j = 0; j < WIDTH_MAP; j++)
 			{
