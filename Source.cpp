@@ -1,11 +1,12 @@
 #include "Creature.h"
 #include "Manager.h"
+#include "Map.h"
 sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
 
 int main(int artv, char** argc)
 {
+    Map M1("map.png", 1);
     sf::Clock clock;
-    Creature hero();
     while (window.isOpen())
     {
         float time = clock.getElapsedTime().asMicroseconds();
@@ -20,6 +21,7 @@ int main(int artv, char** argc)
                 window.close();
         }
         window.clear();
+        M1.Print();
 
         window.display();
     }
