@@ -52,7 +52,7 @@ public:
 		s_map = _s_map;
 
 		File = F;
-		
+
 	}
 
 	sf::String* Get_Map() {
@@ -64,7 +64,7 @@ public:
 	int Get_WIDTH_MAP() {
 		return WIDTH_MAP;
 	}
-	/*void Print() {
+	void Print() {
 		for (int i = 0; i < HEIGHT_MAP; i++)
 			for (int j = 0; j < WIDTH_MAP; j++)
 			{
@@ -76,6 +76,5 @@ public:
 
 				window.draw(s_map);
 			}
-	}*/
+	}
 };
-
