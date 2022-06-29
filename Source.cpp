@@ -18,10 +18,14 @@ int main(int artv, char** argc)
     Creature hero(100, 320, 16, 16);
     Animation* walkR = new Animation("rmove", "Walk.png", 0, 0, 16, 16);
     Animation* walkL = new Animation("lmove", "WalkL.png", 0, 0, 16, 16);
-    Animation* base = new Animation("base", "base.png", 0, 0, 16, 16, 0.003);
-    hero.add_animation(walkR);
-    hero.add_animation(walkL);
-    hero.add_animation(base);
+
+    Animation* walkA = new Animation("amove", "Jump.png", 0, 0, 16, 16);
+    Animation* base = new Animation("base", "base.png", 0, 0, 16, 16);
+    hero.add_animation(*walkR);
+    hero.add_animation(*walkL);
+    hero.add_animation(*walkA);
+    hero.add_animation(*base);
+
     hero.set_default_sprite(*base);
 
     while (window.isOpen()) {
