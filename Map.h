@@ -85,6 +85,7 @@ public:
 		choice_Map = x;
 		File = F;
 		map_image.loadFromFile(File);
+
 		map_image.createMaskFromColor(sf::Color(255, 255, 255));
 		map.loadFromImage(map_image);
 		s_map.setTexture(map);
@@ -92,9 +93,8 @@ public:
 		//s_map.setTextureRect(sf::IntRect(0, 0, 32, 32));
 		//window.draw(s_map);
 		//s_map.setPosition(92, 92);
-		//window.draw(s_map);
+		//window.draw(s_map); 
 		
-
 	}
 
 	sf::String* Get_Map() {
@@ -107,9 +107,6 @@ public:
 		return WIDTH_MAP;
 	}
 	void Print() {
-		//s_map.setTextureRect(sf::IntRect(0, 0, 32, 32));
-		//window.draw(s_map);
-		//s_map.setPosition(32, 32);
 		for (int i = 0; i < HEIGHT_MAP; i++)
 			for (int j = 0; j < WIDTH_MAP; j++)
 			{

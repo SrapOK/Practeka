@@ -9,29 +9,36 @@
 #include <algorithm>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
+#include <vector>
+#include "Animation.h"
 
 extern sf::RenderWindow window;
 
 class Creature
 {
 protected:
-	sf::Sprite _sprite;
 	std::string _name;
-	std::string _path;
-	int _x, _y;
+	float _x, _y;
 	double _dx, _dy;
 	int _width, _height;
-	short _current_frame;
+	sf::Sprite _sprite;
+	std::map<std::string, Animation> animations;
+
 public:
-	Creature(std::string __path, int __x, int __y, int __width, int __height);
-	int x(void);
-	int y(void);
-	double dx(void);
-	double dy(void);
-	int width(void);
-	int height(void);
-	const sf::Sprite& sprite(void);
-	void update(float);
+	Creature(int __x, int __y, int __width, int __height);
+	void add_animation(Animation&);
+	int x(void) const;
+	int y(void) const;
+	double dx(void) const;
+	double dy(void) const;
+	int width(void) const;
+	int height(void) const;
+	const sf::Sprite& sprite(void) const;
+	void set_default_sprite(std::string __path);
+	void set_default_sprite(Animation& __Anim_part);
+	void set_default_sprite(sf::Texture& __Texture_part);
+	void get_command(float);
+	//virtual void update(float) = 0;
 };
 
 #endif // !CREATURE_H
