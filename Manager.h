@@ -4,17 +4,18 @@
 
 #include "Creature.h"
 #include <memory>
+#include <list>
+#include <deque>
 #include <exception>
 extern sf::RenderWindow window;
 
 
-template<typename T>
 class Manager
 {
 private:
-	std::list <std::unique_ptr<T>> list;
+	std::deque <Creature*> list;
 public:
-	void add(T*);
+	void add(Creature*);
 	void display(void);
 };
 

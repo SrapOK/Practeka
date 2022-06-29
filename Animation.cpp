@@ -1,4 +1,5 @@
 #include "Animation.h"
+
 #include <cmath>
 
 sf::Sprite& Animation::get_sprite(void)

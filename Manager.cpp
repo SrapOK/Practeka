@@ -1,17 +1,15 @@
 #include "Manager.h"
 
-template<typename T>
-void Manager<T>::add(T* item)
+
+void Manager::add(Creature* _item)
 {
-	if (T == nullptr) throw std::domain_error("void Manager<T>::add(T* item)");
-	std::unique_ptr<T> pitem = item;
-	list.push_back(pitem);
+	if (_item == nullptr) throw std::domain_error("void Manager<T>::add(T* item)");
+	list.push_back(_item);
 }
 
-template<typename T>
-void Manager<T>::display(void)
+void Manager::display(void)
 {
 	for (size_t i = 0; i < list.size(); i++) {
-		window.draw(list[i].sprite());
+		window.draw(list[i]->sprite());
 	}
 }
