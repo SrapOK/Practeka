@@ -59,7 +59,9 @@ void Creature::get_command(float time)
     int Xp = (_x - 1) / 16;
     int Xn = (_x + 16) / 16;
     int Y = _y/16;
-
+    int Yp = (_y - 1) / 16;
+    int Yn = (_y + 16) / 16;
+    //_sprite.setPosition(sf::Vector2f(100, 100));
     int Fl;
     //int Y = _y  / 16;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
@@ -69,16 +71,10 @@ void Creature::get_command(float time)
         std::cout << X << " " << Y << " " << mapee.at(Y, X) << " " << Xp << " " << Xn << "\n\n";
         Fl = 0;
         for (int i = _y; i < _y + 16; i++) {
-                if (mapee.at(i / 16, Xn) == '1' or mapee.at(i / 16, Xn) == '2' or mapee.at(i / 16, Xn) == '_') { Fl = 1; }
-                //else _x++;
+                if (mapee.at(i / 16, Xn) == '1' or mapee.at(i / 16, Xn) == '2' or mapee.at(i / 16, Xn) == 'G' or mapee.at(i / 16, Xn) == 'T' or mapee.at(i / 16, Xn) == '_' or mapee.at(i / 16, Xn) == '-' or mapee.at(i / 16, Xn) == 'X' or mapee.at(i / 16, Xn) == 'B') { Fl = 1; }
         }
         if (Fl == 0){ _x++; }
-        //if (TileMap2[Y][Xn] == '1' or TileMap2[Y][Xn] == '2' or TileMap2[Y][Xn] == '_') {}
-        //if (TileMap2[Y][Xn] == '2') { _x--; }
-        //else if (TileMap2[Y][Xn] == '1') { _x--; }
-        //else if (TileMap2[Y][Xn] == '_') { _x--; }
-        //else _x++;
-        //std::cout << _x << "\n";
+ 
     }else
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         animations["lmove"].play(time);
@@ -87,19 +83,48 @@ void Creature::get_command(float time)
         std::cout << X << " " << Y << " " << mapee.at(Y, X) << " " << Xp << " " << Xn << "\n\n";
         Fl = 0;
         for (int i = _y; i < _y + 16; i++) {
-            if (mapee.at(i / 16, Xp) == '1' or mapee.at(i / 16, Xp) == '2' or mapee.at(i / 16, Xp) == '_') { Fl = 1; }
-            //else _x++;
+            if (mapee.at(i / 16, Xp) == '1' or mapee.at(i / 16, Xp) == '2' or mapee.at(i / 16, Xp) == 'G' or mapee.at(i / 16, Xp) == 'T' or mapee.at(i / 16, Xp) == '_' or mapee.at(i / 16, Xp) == '-' or mapee.at(i / 16, Xp) == 'X' or mapee.at(i / 16, Xp) == 'B') { Fl = 1; }
         }
         if (Fl == 0) { _x--; }
-        //if (TileMap2[Y][Xp] == '1' or TileMap2[Y][Xp] == '2' or TileMap2[Y][Xp] == '_') {} //{ _x++; }
-        //else if (TileMap2[Y][Xp] == '2') { _x++; }
-        //else if (TileMap2[Y][Xp] == '_') { _x++; }
-        //else if (TileMap2[Y][Xp] == '2') { _x++; }
-        //else _x--;
-        //std::cout << _x << "\n";
-        //_x--;
+
         
     }
+    else
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+            animations["amove"].play(time);
+            _sprite = animations["amove"].get_sprite();
+            _sprite.setPosition(sf::Vector2f(_x, _y));
+            Fl = 0;
+            for (int i = _x; i < _x + 16; i++) {
+                if (mapee.at(Yp, i / 16) == '1' or mapee.at(Yp, i / 16) == '2' or mapee.at(Yp, i / 16) == 'G' or mapee.at(Yp, i / 16) == 'T' or mapee.at(Yp, i / 16) == '_' or mapee.at(Yp, i / 16) == '-' or mapee.at(Yp, i / 16) == 'X' or mapee.at(Yp, i / 16) == 'V' or mapee.at(Yp, i / 16) == 'B') { Fl = 1; }
+            }
+            if (Fl == 0) { _y--; }
+
+        
+        //_y = _y - 10;
+        
+    }
+    else
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+            animations["amove"].play(time);
+            _sprite = animations["amove"].get_sprite();
+            _sprite.setPosition(sf::Vector2f(_x, _y));
+            Fl = 0;
+            for (int i = _x; i < _x + 16; i++) {
+                if (mapee.at(Yn, i / 16) == '1' or mapee.at(Yn, i / 16) == '2' or mapee.at(Yn, i / 16) == 'G' or mapee.at(Yn, i / 16) == 'T' or mapee.at(Yn, i / 16) == '_' or mapee.at(Yn, i / 16) == '-' or mapee.at(Yn, i / 16) == 'X' or mapee.at(Yn, i / 16) == 'V' or mapee.at(Yn, i / 16) == 'B') { 
+                    Fl = 1; 
+                }
+                else if (mapee.at(Yn, i / 16) == 's') {
+                    _y = 310;
+                    _x = 100;
+                }
+            }
+            if (Fl == 0) { _y++; }
+
+
+            //_y = _y - 10;
+
+        }
     else  {
         animations["base"].playB(time);
         _sprite = animations["base"].get_sprite();

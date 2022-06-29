@@ -10,16 +10,6 @@ sf::View view1;
 Manager manager;
 
 
-void getPlayerCoordinateForView(float x, float y) { //функция для считывания координат игрока
-    float tempX = x; float tempY = y;//считываем коорд игрока и проверяем их, чтобы убрать края
-
-    if (x < 100) tempX = 100;//убираем из вида левую сторону
-    if (y < 100) tempY = 100;//верхнюю сторону
-    if (y > 300) tempY = 300;//нижнюю сторону	
-
-    view1.setCenter(tempX, tempY); //следим за игроком, передавая его координаты. 
-
-}
 
 
 int main(int artv, char** argc)
@@ -32,9 +22,11 @@ int main(int artv, char** argc)
     //������� �����, ����� �� ���������� ������ ��������� � ����������� AnimationCreature
     Animation* walkR = new Animation("rmove", "Walk.png", 0, 0, 16, 16);
     Animation* walkL = new Animation("lmove", "WalkL.png", 0, 0, 16, 16);
+    Animation* walkA = new Animation("amove", "Jump.png", 0, 0, 16, 16);
     Animation* base = new Animation("base", "base.png", 0, 0, 16, 16);
     hero.add_animation(*walkR);
     hero.add_animation(*walkL);
+    hero.add_animation(*walkA);
     hero.add_animation(*base);
     hero.set_default_sprite(*base);
     manager.add(&hero);
