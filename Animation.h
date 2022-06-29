@@ -24,6 +24,7 @@ public:
 	std::string animation_name(void);
 	Animation(std::string __animation_name, std::string __path, int __x, int __y, int __width, int __height);
 	void play(float);
+	void playB(float);
 	Animation() = default;
 };
 
