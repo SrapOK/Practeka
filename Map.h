@@ -13,11 +13,9 @@ class Map
 {
 private:
 	const int HEIGHT_MAP = 25;
-	const int WIDTH_MAP = 40*3;
+	int WIDTH_MAP;
 
-	const int HEIGHT_MAP2 = 25;
-	const int WIDTH_MAP2 = 40 * 3;
-	sf::String TileMap2[25];
+	
 	std::string File;
 	std::string tile_map;
 	sf::Sprite s_map;
@@ -26,6 +24,7 @@ private:
 	sf::Sprite _s_map;
 
 public:
+	sf::String TileMap2[25];
 	Map(std::string _File, std::string _tile_map);
 	void print(void);
 	sf::String* Get_Map();

@@ -12,6 +12,7 @@ class Animation
 private:
 	int _frame_counter;
 	float _speed;
+	sf::Image _image;
 	sf::Texture _texture;
 	sf::Sprite _sprite;
 	std::string _path;
@@ -23,9 +24,8 @@ public:
 	sf::Sprite& get_sprite(void);
 	sf::Texture& get_texture(void);
 	std::string animation_name(void);
-	Animation(std::string __animation_name, std::string __path, int __x, int __y, int __width, int __height);
+	Animation(std::string __animation_name, std::string __path, int __x, int __y, int __width, int __height, float __speed = 0.02);
 	void play(float);
-	void playB(float);
 	Animation() = default;
 };
 

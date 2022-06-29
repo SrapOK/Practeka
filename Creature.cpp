@@ -1,15 +1,19 @@
 #include "Creature.h"
+#include "Manager.h"
+#include <fstream>
 
+extern Manager manager;
 
 Creature::Creature(int __x, int __y, int __width, int __height) 
     : _x(__x), _y(__y), _width(__width), _height(__height), _dx(0), _dy(0)
 {
     _sprite.setPosition(sf::Vector2f(_x, _y));
+    manager.add(this);
 }
 
-void Creature::add_animation(Animation& an)
+void Creature::add_animation(Animation* an)
 {
-    animations[an.animation_name()] = an;
+    animations[an->animation_name()] = an;
 }
 
 
@@ -65,8 +69,8 @@ void Creature::get_command(float time)
     int Fl;
     //int Y = _y  / 16;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        animations["rmove"].play(time);
-        _sprite = animations["rmove"].get_sprite();
+        animations["rmove"]->play(time);
+        _sprite = animations["rmove"]->get_sprite();
         _sprite.setPosition(sf::Vector2f(_x, _y));
         std::cout << X << " " << Y << " " << mapee.at(Y, X) << " " << Xp << " " << Xn << "\n\n";
         Fl = 0;
@@ -77,12 +81,13 @@ void Creature::get_command(float time)
                     _x = 100;
                 }
         }
+
         if (Fl == 0){ _x++; }
  
     }else
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        animations["lmove"].play(time);
-        _sprite = animations["lmove"].get_sprite();
+        animations["lmove"]->play(time);
+        _sprite = animations["lmove"]->get_sprite();
         _sprite.setPosition(sf::Vector2f(_x, _y));
         std::cout << X << " " << Y << " " << mapee.at(Y, X) << " " << Xp << " " << Xn << "\n\n";
         Fl = 0;
@@ -95,7 +100,6 @@ void Creature::get_command(float time)
         }
         if (Fl == 0) { _x--; }
 
-        
     }
     else
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {

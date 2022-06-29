@@ -9,6 +9,7 @@
 #include "Animation.h"
 #include "Map.h"
 
+
 extern sf::RenderWindow window;
 extern Map mapee;
 
@@ -20,11 +21,11 @@ protected:
 	double _dx, _dy;
 	int _width, _height;
 	sf::Sprite _sprite;
-	std::map<std::string, Animation> animations;
+	std::map<std::string, Animation*> animations;
 
 public:
 	Creature(int __x, int __y, int __width, int __height);
-	void add_animation(Animation&);
+	void add_animation(Animation*);
 	int x(void) const;
 	int y(void) const;
 	double dx(void) const;

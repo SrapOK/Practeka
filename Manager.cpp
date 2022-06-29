@@ -1,6 +1,13 @@
 #include "Manager.h"
 
 
+void Manager::update(float _time)
+{
+	for (size_t i = 0; i < list.size(); i++) {
+		list[i]->get_command(_time);
+	}
+}
+
 void Manager::add(Creature* _item)
 {
 	if (_item == nullptr) throw std::domain_error("void Manager<T>::add(T* item)");
