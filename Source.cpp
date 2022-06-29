@@ -1,16 +1,33 @@
 #include "Creature.h"
 #include "Manager.h"
 #include "Map.h"
-sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+#include "View.h"
+
+//sf::View view1;
+sf::RenderWindow window(sf::VideoMode(600, 400), "My window");
+sf::View view1;
 
 int main(int artv, char** argc)
 {
-    Map M1("map.png", 1);
+
+    view1.reset(sf::FloatRect(0, 0, 640, 480));
+    
+
+    //sf::Image map_image;
+    //map_image.loadFromFile("map.png");
+    //sf::Texture map;
+    //map.loadFromImage(map_image);
+    //sf::Sprite _s_map;
+    //_s_map.setTexture(map);
+
+
+    Map M1("Gameboy Tileset.png", 2);
+
     sf::Clock clock;
-    // Решить проблему с менеджером(не вызываются методы)
+    // пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ(пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ)
     Manager <Creature> manager;
     Creature hero(100, 100, 16, 16);
-    //создать метод, чтобы не копировать размер персонажа в констукторы AnimationCreature
+    //пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ AnimationCreature
     Animation* walk = new Animation("rmove", "Walk.png", 0, 0, 16, 16);
     Animation* base = new Animation("base", "base.png", 0, 0, 16, 16);
     hero.add_animation(*walk);
@@ -30,11 +47,19 @@ int main(int artv, char** argc)
                 window.close();
             
         }
-        //if (time ) дописать ограниченик на update
 
-        //переделать в update;
+        //if (time ) пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ update
+
+        //пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ update;
         hero.get_command(time);
+
+
+        //GetPlayerCoordinateForView(100, 100);
+        //viewmap(time);
+        window.setView(view1);
+
         window.clear();
+
         M1.Print();
         window.draw(hero.sprite());
         

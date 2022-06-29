@@ -27,7 +27,11 @@
     <ClCompile Include="Map.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+
     <ClCompile Include="Animation.cpp">
+
+    <ClCompile Include="View.cpp">
+
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +45,14 @@
     <ClInclude Include="Map.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+
     <ClInclude Include="Animation.h">
+
+    <ClInclude Include="Header.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="View.h">
+
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

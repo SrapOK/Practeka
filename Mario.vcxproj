@@ -147,12 +147,15 @@
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="View.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Creature.h" />
+    <ClInclude Include="Header.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="View.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="map.png" />
