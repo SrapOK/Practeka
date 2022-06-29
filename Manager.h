@@ -4,6 +4,7 @@
 
 #include "Creature.h"
 #include <memory>
+#include <exception>
 extern sf::RenderWindow window;
 
 
@@ -13,8 +14,8 @@ class Manager
 private:
 	std::list <std::unique_ptr<T>> list;
 public:
-	void add(T&);
-	void drow(void);
+	void add(T*);
+	void display(void);
 };
 
 #endif // MANAGER_H

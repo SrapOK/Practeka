@@ -50,19 +50,9 @@ public:
 	sf::Sprite _s_map;
 	Map(std::string F, int x) {
 		File = F;
-		
 		map_image.loadFromFile(File);
-		
 		map.loadFromImage(map_image);
-		
-		s_map.setTexture(map);
-		//s_map = _s_map;
-		//s_map.setTextureRect(sf::IntRect(0, 0, 32, 32));
-		//window.draw(s_map);
-		//s_map.setPosition(92, 92);
-		//window.draw(s_map);
-		
-
+		s_map.setTexture(map);		
 	}
 
 	sf::String* Get_Map() {
@@ -75,9 +65,6 @@ public:
 		return WIDTH_MAP;
 	}
 	void Print() {
-		//s_map.setTextureRect(sf::IntRect(0, 0, 32, 32));
-		//window.draw(s_map);
-		//s_map.setPosition(32, 32);
 		for (int i = 0; i < HEIGHT_MAP; i++)
 			for (int j = 0; j < WIDTH_MAP; j++)
 			{
