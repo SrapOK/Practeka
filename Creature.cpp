@@ -103,8 +103,8 @@ void Creature::get_command(float time)
     }
     else
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-            animations["amove"].play(time);
-            _sprite = animations["amove"].get_sprite();
+            animations["amove"]->play(time);
+            _sprite = animations["amove"]->get_sprite();
             _sprite.setPosition(sf::Vector2f(_x, _y));
             Fl = 0;
             for (int i = _x; i < _x + 16; i++) {
@@ -122,8 +122,8 @@ void Creature::get_command(float time)
     }
     else
         if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-            animations["amove"].play(time);
-            _sprite = animations["amove"].get_sprite();
+            animations["amove"]->play(time);
+            _sprite = animations["amove"]->get_sprite();
             _sprite.setPosition(sf::Vector2f(_x, _y));
             Fl = 0;
             for (int i = _x; i < _x + 16; i++) {
@@ -142,8 +142,8 @@ void Creature::get_command(float time)
 
         }
     else  {
-        animations["base"].playB(time);
-        _sprite = animations["base"].get_sprite();
+        animations["base"]->play(time);
+        _sprite = animations["base"]->get_sprite();
         _sprite.setPosition(sf::Vector2f(_x, _y));
     }
 }
