@@ -33,8 +33,18 @@ void Animation::play(float __time)
 {
 	_current_frame += _speed * __time;
 	if (_width == 0) std::cout << "Booba\n";
-	std::cout << "\n" << _frame_counter  << "\n" << _current_frame;
-	std::cout << "\nIdi naxuy\n" << __time;
+	//std::cout << "\n" << _frame_counter  << "\n" << _current_frame;
+	//std::cout << "\nIdi naxuy\n" << __time;
+	if (_current_frame > _frame_counter) _current_frame -= _frame_counter;
+	_sprite.setTextureRect(sf::IntRect(_width * tolower(_current_frame), 0, _width, _height));
+}
+
+void Animation::playB(float __time)
+{
+	_current_frame += 0.003 * __time;
+	if (_width == 0) std::cout << "Booba\n";
+	//std::cout << "\n" << _frame_counter << "\n" << _current_frame;
+	//std::cout << "\nIdi naxuy\n" << __time;
 	if (_current_frame > _frame_counter) _current_frame -= _frame_counter;
 	_sprite.setTextureRect(sf::IntRect(_width * tolower(_current_frame), 0, _width, _height));
 }

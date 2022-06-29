@@ -38,6 +38,7 @@ public:
 	void set_default_sprite(Animation& __Anim_part);
 	void set_default_sprite(sf::Texture& __Texture_part);
 	void get_command(float);
+//	int grtVector2f();
 	//virtual void update(float) = 0;
 };
 

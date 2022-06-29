@@ -4,21 +4,45 @@
 #include "View.h"
 
 //sf::View view1;
-sf::RenderWindow window(sf::VideoMode(600, 400), "My window");
+sf::RenderWindow window(sf::VideoMode(600, 600), "My window");
 sf::View view1;
+
+void viewmap(float time) { //функция для перемещения камеры по карте
+
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+        view1.move(0.1 * time, 0);
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+        view1.move(0, 0.1 * time);
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+        view1.move(-0.1 * time, 0);
+    }
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+        view1.move(0, -0.1 * time);
+    }
+
+}
+
+void getPlayerCoordinateForView(float x, float y) { //функция для считывания координат игрока
+    float tempX = x; float tempY = y;//считываем коорд игрока и проверяем их, чтобы убрать края
+
+    if (x < 100) tempX = 100;//убираем из вида левую сторону
+    if (y < 100) tempY = 100;//верхнюю сторону
+    if (y > 300) tempY = 300;//нижнюю сторону	
+
+    view1.setCenter(tempX, tempY); //следим за игроком, передавая его координаты. 
+
+}
+
 
 int main(int artv, char** argc)
 {
 
-    view1.reset(sf::FloatRect(0, 0, 640, 480));
-    
-
-    //sf::Image map_image;
-    //map_image.loadFromFile("map.png");
-    //sf::Texture map;
-    //map.loadFromImage(map_image);
-    //sf::Sprite _s_map;
-    //_s_map.setTexture(map);
+    view1.reset(sf::FloatRect(0, 0, 200, 200));
 
 
     Map M1("Gameboy Tileset.png", 2);
@@ -26,11 +50,13 @@ int main(int artv, char** argc)
     sf::Clock clock;
     // ������ �������� � ����������(�� ���������� ������)
     Manager <Creature> manager;
-    Creature hero(100, 100, 16, 16);
+    Creature hero(100, 320, 16, 16);
     //������� �����, ����� �� ���������� ������ ��������� � ����������� AnimationCreature
-    Animation* walk = new Animation("rmove", "Walk.png", 0, 0, 16, 16);
+    Animation* walkR = new Animation("rmove", "Walk.png", 0, 0, 16, 16);
+    Animation* walkL = new Animation("lmove", "WalkL.png", 0, 0, 16, 16);
     Animation* base = new Animation("base", "base.png", 0, 0, 16, 16);
-    hero.add_animation(*walk);
+    hero.add_animation(*walkR);
+    hero.add_animation(*walkL);
     hero.add_animation(*base);
     hero.set_default_sprite(*base);
 
@@ -52,9 +78,9 @@ int main(int artv, char** argc)
 
         //���������� � update;
         hero.get_command(time);
+        
 
-
-        //GetPlayerCoordinateForView(100, 100);
+        getPlayerCoordinateForView(hero.x(), hero.y());
         //viewmap(time);
         window.setView(view1);
 

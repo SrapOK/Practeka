@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 //extern sf::RenderWindow window;
 
-sf::View view1;
+//sf::View view1;
 
 // = window.getDefaultView();
 
