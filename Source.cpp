@@ -21,7 +21,7 @@ int main(int artv, char** argc)
     {
         float time = clock.getElapsedTime().asMilliseconds();
         clock.restart();
-
+        
 
         sf::Event event;
         while (window.pollEvent(event))
