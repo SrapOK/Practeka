@@ -58,6 +58,7 @@ Map::Map(std::string _File, std::string _tile_map) : tile_map(_tile_map), File(_
 		if (!std::getline(input, tmp)) break;
 		TileMap2[i] = tmp;
 	}
+	WIDTH_MAP = TileMap2[0].getSize();
 	map_image.createMaskFromColor(sf::Color(255, 255, 255));
 	map.loadFromImage(map_image);
 	s_map.setTexture(map);

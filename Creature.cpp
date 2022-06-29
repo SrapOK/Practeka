@@ -1,15 +1,19 @@
 #include "Creature.h"
+#include "Manager.h"
+#include <fstream>
 
+extern Manager manager;
 
 Creature::Creature(int __x, int __y, int __width, int __height) 
     : _x(__x), _y(__y), _width(__width), _height(__height), _dx(0), _dy(0)
 {
     _sprite.setPosition(sf::Vector2f(_x, _y));
+    manager.add(this);
 }
 
-void Creature::add_animation(Animation& an)
+void Creature::add_animation(Animation* an)
 {
-    animations[an.animation_name()] = an;
+    animations[an->animation_name()] = an;
 }
 
 
@@ -63,8 +67,8 @@ void Creature::get_command(float time)
     int Fl;
     //int Y = _y  / 16;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        animations["rmove"].play(time);
-        _sprite = animations["rmove"].get_sprite();
+        animations["rmove"]->play(time);
+        _sprite = animations["rmove"]->get_sprite();
         _sprite.setPosition(sf::Vector2f(_x, _y));
         std::cout << X << " " << Y << " " << mapee.at(Y, X) << " " << Xp << " " << Xn << "\n\n";
         Fl = 0;
@@ -72,17 +76,11 @@ void Creature::get_command(float time)
                 if (mapee.at(i / 16, Xn) == '1' or mapee.at(i / 16, Xn) == '2' or mapee.at(i / 16, Xn) == '_') { Fl = 1; }
                 //else _x++;
         }
-        if (Fl == 0){ _x++; }
-        //if (TileMap2[Y][Xn] == '1' or TileMap2[Y][Xn] == '2' or TileMap2[Y][Xn] == '_') {}
-        //if (TileMap2[Y][Xn] == '2') { _x--; }
-        //else if (TileMap2[Y][Xn] == '1') { _x--; }
-        //else if (TileMap2[Y][Xn] == '_') { _x--; }
-        //else _x++;
-        //std::cout << _x << "\n";
+        if (Fl == 0){ _x+= 5; }
     }else
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        animations["lmove"].play(time);
-        _sprite = animations["lmove"].get_sprite();
+        animations["lmove"]->play(time);
+        _sprite = animations["lmove"]->get_sprite();
         _sprite.setPosition(sf::Vector2f(_x, _y));
         std::cout << X << " " << Y << " " << mapee.at(Y, X) << " " << Xp << " " << Xn << "\n\n";
         Fl = 0;
@@ -91,18 +89,14 @@ void Creature::get_command(float time)
             //else _x++;
         }
         if (Fl == 0) { _x--; }
-        //if (TileMap2[Y][Xp] == '1' or TileMap2[Y][Xp] == '2' or TileMap2[Y][Xp] == '_') {} //{ _x++; }
-        //else if (TileMap2[Y][Xp] == '2') { _x++; }
-        //else if (TileMap2[Y][Xp] == '_') { _x++; }
-        //else if (TileMap2[Y][Xp] == '2') { _x++; }
-        //else _x--;
-        //std::cout << _x << "\n";
-        //_x--;
-        
-    }
-    else  {
-        animations["base"].playB(time);
-        _sprite = animations["base"].get_sprite();
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+        animations["lmove"]->play(time);
+        _sprite = animations["lmove"]->get_sprite();
+        _sprite.setPosition(sf::Vector2f(_x, _y));
+        _y--;
+    } else  {
+        animations["base"]->play(time);
+        _sprite = animations["base"]->get_sprite();
         _sprite.setPosition(sf::Vector2f(_x, _y));
     }
 }
