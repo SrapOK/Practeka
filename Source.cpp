@@ -1,10 +1,16 @@
 #include "Creature.h"
 #include "Manager.h"
 #include "Map.h"
-sf::RenderWindow window(sf::VideoMode(1920, 400), "My window");
+#include "View.h"
+
+//sf::View view1;
+sf::RenderWindow window(sf::VideoMode(600, 400), "My window");
+sf::View view1;
 
 int main(int artv, char** argc)
 {
+    view1.reset(sf::FloatRect(0, 0, 640, 480));
+    
 
     //sf::Image map_image;
     //map_image.loadFromFile("map.png");
@@ -29,7 +35,12 @@ int main(int artv, char** argc)
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+
+        //GetPlayerCoordinateForView(100, 100);
+        //viewmap(time);
+        window.setView(view1);
         window.clear();
+
         M1.Print();
         //M1.s_map.setTextureRect(sf::IntRect(0, 0, 32, 32));
         //window.draw(M1.s_map);
