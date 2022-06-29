@@ -4,15 +4,13 @@
 
 #include <string>
 #include <iostream>
-#include <list>
-#include <forward_list>
-#include <algorithm>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
-#include <vector>
 #include "Animation.h"
+#include "Map.h"
 
 extern sf::RenderWindow window;
+extern Map mapee;
 
 class Creature
 {

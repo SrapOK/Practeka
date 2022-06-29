@@ -1,32 +1,64 @@
 #include "Map.h"
 #include <SFML/Graphics.hpp>
 
-/*void Map::GetMap() {
-	sf::String TileMap[25] = {
-	"0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-	"0                                                                                                                                                              0",
-	"0   s                                                                                                                                                          0",
-	"0                                                                                                                                                              0",
-	"0                                                                                                                                                              0",
-	"0                                                                                                                                                              0",
-	"0                                                                                                                                                              0",
-	"0                                                                                                                                                              0",
-	"0                                                                                                                                                              0",
-	"0                                                                                                                                                              0",
-	"0                                                                                                                                      0                       0",
-	"0                                                                                                                                     00                       0",
-	"0                                                                                                                                    000                       0",
-	"0                                                                                                                                   0000                       0",
-	"0                                                                                                                                  00000                       0",
-	"0                                               0        0                                                                        000000                       0",
-	"0                                      000000 00000000000000                                                                     0000000                       0",
-	"0                                  00         000000000000000                                                                   00000000                       0",
-	"0                             00              0000000000000000                                                                 000000000                       0",
-	"0             00   000   00                   00000000000000000                                                               0000000000                       0",
-	"0             00sssssssss00sssssssssssssssssss000000000000000000            ssss                    00        00        00   00000000000sssssssssssssssssssssss0",
-	"000000000000000000000000000000000000000000000000000000000000000000000000    000000000000000   000000000000000000000000000000000000000000000000000000000000000000",
-	"00000000000000000000000000000000000000000000000000000000000000000000000000    00000000000    0000000000000000000000000000000000000000000000000000000000000000000",
-	"00000000000000000000000000000000000000000000000000000000000000000000000000000              000000000000000000000000000000000000000000000000000000000000000000000",
-	"0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-	};
-}*/
+void Map::print() {
+	for (int i = 0; i < HEIGHT_MAP; i++) {
+		for (int j = 0; j < WIDTH_MAP; j++) {
+			s_map.setTextureRect(sf::IntRect(189, 128, 16, 16));
+			/*
+			if (choice_Map == 1) {
+				if (TileMap[i][j] == ' ')  s_map.setTextureRect(sf::IntRect(0, 0, 32, 32));
+				if (TileMap[i][j] == 's')  s_map.setTextureRect(sf::IntRect(32, 0, 32, 32));
+				if ((TileMap[i][j] == '0')) s_map.setTextureRect(sf::IntRect(64, 0, 32, 32));
+			}
+			*/
+			if (TileMap2[i][j] == 'J')  s_map.setTextureRect(sf::IntRect(32, 176, 16, 16));
+			if (TileMap2[i][j] == 'F')  s_map.setTextureRect(sf::IntRect(16, 48, 16, 16));
+			if (TileMap2[i][j] == 'Z')  s_map.setTextureRect(sf::IntRect(128, 96, 16, 16));
+			if (TileMap2[i][j] == 'Y')  s_map.setTextureRect(sf::IntRect(0, 144, 16, 16));
+			if (TileMap2[i][j] == 'V')  s_map.setTextureRect(sf::IntRect(16, 144, 16, 16));
+			if (TileMap2[i][j] == 'X')  s_map.setTextureRect(sf::IntRect(16, 16, 16, 16));
+			if (TileMap2[i][j] == '-')  s_map.setTextureRect(sf::IntRect(32, 16, 16, 16));
+			if (TileMap2[i][j] == 'B')  s_map.setTextureRect(sf::IntRect(0, 16, 16, 16));
+			if (TileMap2[i][j] == 'T')  s_map.setTextureRect(sf::IntRect(80, 144, 16, 16));
+			if (TileMap2[i][j] == '2')  s_map.setTextureRect(sf::IntRect(0, 160, 16, 16));
+			if (TileMap2[i][j] == 'L')  s_map.setTextureRect(sf::IntRect(0, 176, 16, 16));
+			if (TileMap2[i][j] == '_')  s_map.setTextureRect(sf::IntRect(16, 176, 16, 16));
+			if (TileMap2[i][j] == 'G')  s_map.setTextureRect(sf::IntRect(48, 144, 16, 16));
+			if (TileMap2[i][j] == '1')  s_map.setTextureRect(sf::IntRect(32, 160, 32, 32));
+			if (TileMap2[i][j] == 's')  s_map.setTextureRect(sf::IntRect(144, 64, 16, 16));
+			if ((TileMap2[i][j] == '0')) s_map.setTextureRect(sf::IntRect(48 + 16, 160, 16, 16));
+			s_map.setPosition(j * 16, i * 16);
+
+			window.draw(s_map);
+		}
+	}
+}
+
+sf::String* Map::Get_Map() {
+	return TileMap2;
+}
+char Map::at(int _x, int _y) {
+	return TileMap2[_x][_y];
+}
+int Map::Get_HEIGHT_MAP() {
+	return HEIGHT_MAP;
+}
+int Map::Get_WIDTH_MAP() {
+	return WIDTH_MAP;
+}
+
+Map::Map(std::string _File, std::string _tile_map) : tile_map(_tile_map), File(_File) {
+
+	map_image.loadFromFile(File);
+	std::ifstream input;
+	input.open(tile_map);
+	std::string tmp;
+	for (size_t i = 0; i < 25; i++) {
+		if (!std::getline(input, tmp)) break;
+		TileMap2[i] = tmp;
+	}
+	map_image.createMaskFromColor(sf::Color(255, 255, 255));
+	map.loadFromImage(map_image);
+	s_map.setTexture(map);
+}

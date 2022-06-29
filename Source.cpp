@@ -5,27 +5,10 @@
 
 //sf::View view1;
 sf::RenderWindow window(sf::VideoMode(600, 600), "My window");
+Map mapee("Gameboy Tileset.png", "2.txt");
 sf::View view1;
+Manager manager;
 
-void viewmap(float time) { //функция для перемещения камеры по карте
-
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        view1.move(0.1 * time, 0);
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-        view1.move(0, 0.1 * time);
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        view1.move(-0.1 * time, 0);
-    }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-        view1.move(0, -0.1 * time);
-    }
-
-}
 
 void getPlayerCoordinateForView(float x, float y) { //функция для считывания координат игрока
     float tempX = x; float tempY = y;//считываем коорд игрока и проверяем их, чтобы убрать края
@@ -41,15 +24,10 @@ void getPlayerCoordinateForView(float x, float y) { //функция для сч
 
 int main(int artv, char** argc)
 {
-
     view1.reset(sf::FloatRect(0, 0, 200, 200));
-
-
-    Map M1("Gameboy Tileset.png", 2);
 
     sf::Clock clock;
     // ������ �������� � ����������(�� ���������� ������)
-    Manager <Creature> manager;
     Creature hero(100, 320, 16, 16);
     //������� �����, ����� �� ���������� ������ ��������� � ����������� AnimationCreature
     Animation* walkR = new Animation("rmove", "Walk.png", 0, 0, 16, 16);
@@ -59,6 +37,7 @@ int main(int artv, char** argc)
     hero.add_animation(*walkL);
     hero.add_animation(*base);
     hero.set_default_sprite(*base);
+    manager.add(&hero);
 
     while (window.isOpen())
     {
@@ -86,8 +65,8 @@ int main(int artv, char** argc)
 
         window.clear();
 
-        M1.Print();
-        window.draw(hero.sprite());
+        mapee.print();
+        manager.display();
         
         window.display();
     }

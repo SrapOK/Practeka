@@ -1,4 +1,5 @@
 #ifndef ANIMATION_H
+#define ANIMATION_H
 #pragma once
 
 #include <iostream>
@@ -30,7 +31,6 @@ public:
 
 
 
-#define ANIMATION_H
 #endif // !ANIMATION_H
 
 
