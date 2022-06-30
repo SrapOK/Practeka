@@ -22,11 +22,11 @@ Animation::Animation(std::string __animation_name, std::string __path, int __x, 
 {	
 	_image.loadFromFile(__path);
 	sf::Vector2u tmp =_image.getSize();
-	_frame_counter = tmp.x / _width;
+	_frame_counter = tmp.x / abs(_width);
 
 	_texture.loadFromFile(__path);
 	_sprite.setTexture(_texture);
-	_sprite.setTextureRect(sf::IntRect(0, 0, _width, _height));
+	_sprite.setTextureRect(sf::IntRect(_x, _y, _width, _height));
 }
 
 void Animation::play(float __time)
@@ -34,5 +34,7 @@ void Animation::play(float __time)
 	_current_frame += _speed * __time;
 	if (_width == 0) std::cout << "Booba\n";
 	if (_current_frame > _frame_counter) _current_frame = 0;
-	_sprite.setTextureRect(sf::IntRect(_width * tolower(_current_frame), 0, _width, _height));
+	if (_width < 0) _sprite.setTextureRect(sf::IntRect(abs(_width * tolower(_current_frame)) - _width, 0, _width, _height));
+	if (_width > 0) _sprite.setTextureRect(sf::IntRect(abs(_width * tolower(_current_frame)), 0, _width, _height));
+	
 }

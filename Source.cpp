@@ -16,27 +16,29 @@ int main(int artv, char** argc)
     view1.reset(sf::FloatRect(0, 0, 200, 200));
     sf::Clock clock;
     Creature hero(100, 320, 16, 16);
-    Animation* walkR = new Animation("rmove", "Walk.png", 0, 0, 16, 16);
-    Animation* walkL = new Animation("lmove", "WalkL.png", 0, 0, 16, 16);
-
-    Animation* walkA = new Animation("amove", "Jump.png", 0, 0, 16, 16);
+    Animation* right = new Animation("right", "Walk.png", 0, 0, 16, 16);
+    Animation* left = new Animation("left", "Walk.png", 16, 0, -16, 16);
+    Animation* up = new Animation("up", "Jump.png", 0, 0, 16, 16);
+    Animation* fall = new Animation("rfall", "Fall.png", 0, 0, 16, 16);
     Animation* base = new Animation("base", "base.png", 0, 0, 16, 16, 0.003);
-    hero.add_animation(walkR);
-    hero.add_animation(walkL);
-    hero.add_animation(walkA);
+    hero.add_animation(right);
+    hero.add_animation(left);
+    hero.add_animation(up);
+    hero.add_animation(fall);
     hero.add_animation(base);
 
     hero.set_default_sprite(*base);
     float last_time = 0;
     while (window.isOpen()) {
-        float time = clock.getElapsedTime().asMilliseconds();
+        float time = clock.getElapsedTime().asMicroseconds();
         clock.restart();
+
 
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) window.close();
         }
-
+        time /= 800;
         //if (time ) �������� ����������� �� update
         manager.update(time);
 

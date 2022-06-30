@@ -5,6 +5,7 @@ void Manager::update(float _time)
 {
 	for (size_t i = 0; i < list.size(); i++) {
 		list[i]->get_command(_time);
+		list[i]->move();
 	}
 }
 
