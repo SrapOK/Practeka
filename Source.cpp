@@ -27,7 +27,7 @@ int main(int artv, char** argc)
     hero.add_animation(base);
 
     hero.set_default_sprite(*base);
-
+    float last_time = 0;
     while (window.isOpen()) {
         float time = clock.getElapsedTime().asMilliseconds();
         clock.restart();
@@ -38,10 +38,7 @@ int main(int artv, char** argc)
         }
 
         //if (time ) �������� ����������� �� update
-
-        //���������� � update;
         manager.update(time);
-        
 
         getPlayerCoordinateForView(hero.x(), hero.y());
 
