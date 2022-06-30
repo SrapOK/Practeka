@@ -16,9 +16,10 @@ extern Map mapee;
 class Creature
 {
 protected:
+	bool alive;
 	bool up_is_pressed;
-	void collision_x();
-	void collision_y();
+	bool collision_x();
+	bool collision_y();
 	std::string _name;
 	float _dx, _dy;
 	float _speed;
@@ -42,10 +43,9 @@ public:
 	void set_default_sprite(std::string __path);
 	void set_default_sprite(Animation& __Anim_part);
 	void set_default_sprite(sf::Texture& __Texture_part);
-	void get_command(float);
-	void move(void);
-//	int grtVector2f();
-	//virtual void update(float) = 0;
+	virtual void get_command(float) = 0;
+	virtual void move(void) = 0;
+	virtual ~Creature() {};
 };
 
 #endif // !CREATURE_H
