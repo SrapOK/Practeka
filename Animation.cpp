@@ -19,9 +19,9 @@ std::string Animation::animation_name(void)
 
 Animation::Animation(std::string __animation_name, std::string __path, int __x, int __y, int __width, int __height, float __speed)
 	: _animation_name(__animation_name), _path(__path), _x(__x), _y(__y), _width(__width), _height(__height), _speed(__speed), _current_frame(0), _frame_counter(0)
-{
+{	
 	_image.loadFromFile(__path);
-	sf::Vector2u tmp = _image.getSize();
+	sf::Vector2u tmp =_image.getSize();
 	_frame_counter = tmp.x / abs(_width);
 
 	_texture.loadFromFile(__path);
@@ -36,5 +36,5 @@ void Animation::play(float __time)
 	if (_current_frame > _frame_counter) _current_frame = 0;
 	if (_width < 0) _sprite.setTextureRect(sf::IntRect(abs(_width * tolower(_current_frame)) - _width, 0, _width, _height));
 	if (_width > 0) _sprite.setTextureRect(sf::IntRect(abs(_width * tolower(_current_frame)), 0, _width, _height));
-
+	
 }

@@ -107,7 +107,7 @@ void Creature::move(void)
     _sprite.move(this->x(), this->y());
 
     _dx = 0;
-
+    
 }
 
 void Creature::collision_x()
@@ -165,6 +165,7 @@ void Creature::get_command(float time)
             }
         }
         if (Fl == 0) {
+
             _dy += _speed * 0.10 * time;
             _x += _dx;
             _y += _dy;
@@ -187,8 +188,10 @@ void Creature::get_command(float time)
                 _x = 100;
             }
         }
+
         if (Fl == 0){
             _dx = _speed * time;
+
             _x += _dx;
             _y += _dy;
             _x = tolower(_x);
@@ -198,7 +201,7 @@ void Creature::get_command(float time)
         animations["rmove"]->play(time);
         _sprite = animations["rmove"]->get_sprite();
         _sprite.setPosition((int)_x, (int)_y);
-
+ 
     }else
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
         //std::cout << X << " " << Y << " " << mapee.at(Y, X) << " " << Xp << " " << Xn << "\n\n";
@@ -212,6 +215,7 @@ void Creature::get_command(float time)
         }
         if (Fl == 0) {
             _dx = -_speed * time;
+
             _x += _dx;
             _y += _dy;
             _x = tolower(_x);
@@ -221,6 +225,7 @@ void Creature::get_command(float time)
         animations["lmove"]->play(time);
         _sprite = animations["lmove"]->get_sprite();
         _sprite.setPosition((int)_x, (int)_y);
+
     }
     else
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
@@ -243,13 +248,13 @@ void Creature::get_command(float time)
             animations["amove"]->play(time);
             _sprite = animations["amove"]->get_sprite();
             _sprite.setPosition((int)_x, (int)_y);
-
+        
     }
     else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
             Fl = 0;
             for (int i = _x; i < _x + 16; i++) {
-                if (mapee.at(Yn, i / 16) == '1' or mapee.at(Yn, i / 16) == '2' or mapee.at(Yn, i / 16) == 'G' or mapee.at(Yn, i / 16) == 'T' or mapee.at(Yn, i / 16) == '_' or mapee.at(Yn, i / 16) == '-' or mapee.at(Yn, i / 16) == 'X' or mapee.at(Yn, i / 16) == 'V' or mapee.at(Yn, i / 16) == 'B') {
-                    Fl = 1;
+                if (mapee.at(Yn, i / 16) == '1' or mapee.at(Yn, i / 16) == '2' or mapee.at(Yn, i / 16) == 'G' or mapee.at(Yn, i / 16) == 'T' or mapee.at(Yn, i / 16) == '_' or mapee.at(Yn, i / 16) == '-' or mapee.at(Yn, i / 16) == 'X' or mapee.at(Yn, i / 16) == 'V' or mapee.at(Yn, i / 16) == 'B') { 
+                    Fl = 1; 
                 }
                 else if (mapee.at(Yn, i / 16) == 's') {
                     _y = 310;
@@ -258,6 +263,7 @@ void Creature::get_command(float time)
             }
             if (Fl == 0) {
                 _dx = _speed * time;
+
                 _x += _dx;
                 _y += _dy;
                 _x = tolower(_x);
@@ -267,6 +273,7 @@ void Creature::get_command(float time)
             animations["amove"]->play(time);
             _sprite = animations["amove"]->get_sprite();
             _sprite.setPosition((int)_x, (int)_y);
+
         }
     else  {
         std::cout << "?\n";

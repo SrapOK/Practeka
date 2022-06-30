@@ -19,13 +19,14 @@ int main(int artv, char** argc)
     Animation* right = new Animation("right", "Walk.png", 0, 0, 16, 16);
     Animation* left = new Animation("left", "Walk.png", 16, 0, -16, 16);
     Animation* up = new Animation("up", "Jump.png", 0, 0, 16, 16);
-    Animation* fall = new Animation("rfall", "Fall.png", 0, 0, 16, 16);
+    Animation* fall = new Animation("fall", "Fall.png", 0, 0, 16, 16);
     Animation* base = new Animation("base", "base.png", 0, 0, 16, 16, 0.003);
     hero.add_animation(right);
     hero.add_animation(left);
     hero.add_animation(up);
     hero.add_animation(fall);
     hero.add_animation(base);
+
     hero.set_default_sprite(*base);
     float last_time = 0;
     while (window.isOpen()) {
