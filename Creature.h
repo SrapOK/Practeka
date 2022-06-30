@@ -17,8 +17,10 @@ class Creature
 {
 protected:
 	std::string _name;
-	float _x, _y;
-	double _dx, _dy;
+	int _x, _y;
+	float _dx, _dy;
+	float _speed;
+
 	int _width, _height;
 	sf::Sprite _sprite;
 	std::map<std::string, Animation*> animations;
@@ -28,8 +30,8 @@ public:
 	void add_animation(Animation*);
 	int x(void) const;
 	int y(void) const;
-	double dx(void) const;
-	double dy(void) const;
+	float dx(void) const;
+	float dy(void) const;
 	int width(void) const;
 	int height(void) const;
 	const sf::Sprite& sprite(void) const;
