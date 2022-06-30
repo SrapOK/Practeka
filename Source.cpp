@@ -4,6 +4,8 @@
 #include "View.h"
 #include "Hero.h"
 #include "Enemy.h"
+#include "interface.h"
+#include <sstream>
 
 sf::RenderWindow window(sf::VideoMode(600, 600), "My window");
 Map mapee("Gameboy Tileset.png", "2.txt");
@@ -15,17 +17,19 @@ Manager manager;
 
 int main(int artv, char** argc)
 {
-    Creature* hero = new Hero(100, 320, 16, 16);
-    Creature* grip = new Enemy(844, 240, 16, 16);
+    sf::Font font;
+    font.loadFromFile("Manrope-Regular.ttf");
+    sf::Text text("", font, 15);
+    text.setString("Pizda tebe chelik");
+    text.setPosition(50, 50);
+    text.setFillColor(sf::Color::Red);
+
+    Creature* hero = new Hero(100, 320, 16, 16, 3);
     Animation* right = new Animation("right", "Walk.png", 0, 0, 16, 16);
-    Animation* left = new Animation("left", "Walk.png", 16, 0, -16, 16);
+    Animation* left = new Animation("left", "Walk.png", 0, 0, -16, 16);
     Animation* up = new Animation("up", "Jump.png", 0, 0, 16, 16);
     Animation* fall = new Animation("fall", "Fall.png", 0, 0, 16, 16);
     Animation* base = new Animation("base", "base.png", 0, 0, 16, 16, 0.003);
-
-    Animation* baseGripR = new Animation("baseGripR", "simples_pimples.png", 417, 208, 16, 16, 0.003, 2);
-    Animation* baseGripL = new Animation("baseGripL", "simples_pimples.png", 417, 208, -16, 16, 0.003, 2);
-
     hero->add_animation(right);
     hero->add_animation(left);
     hero->add_animation(up);
@@ -33,9 +37,17 @@ int main(int artv, char** argc)
     hero->add_animation(base);
     hero->set_default_sprite(*base);
 
+    Creature* grip = new Enemy(844, 240, 16, 16, 1);
+    Animation* baseGripR = new Animation("baseGripR", "simples_pimples.png", 417, 208, 16, 16, 0.003, 2);
+    Animation* baseGripL = new Animation("baseGripL", "simples_pimples.png", 417, 208, -16, 16, 0.003, 2);
     grip->add_animation(baseGripR);
     grip->add_animation(baseGripL);
     
+    
+
+    interface st();
+    //hp.setPosition(-300, -300);
+
     view1.reset(sf::FloatRect(0, 0, 200, 200));
     sf::Clock clock;
 
@@ -57,8 +69,18 @@ int main(int artv, char** argc)
         window.setView(view1);
 
         window.clear();
-
+        
         mapee.print();
+        window.draw(text);
+        int hp = hero->hp();
+        sf::Text __hp("", font, 15);
+        __hp.setFillColor(sf::Color::Red);
+        std::ostringstream _hp;
+        _hp << hp;
+        __hp.setString(_hp.str());
+        __hp.setPosition(view1.getCenter().x - 90, view1.getCenter().y - 90);
+        
+        window.draw(__hp);
         manager.display();
         
         window.display();

@@ -9,6 +9,7 @@
     <ClCompile Include="View.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="interface.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -19,6 +20,7 @@
     <ClInclude Include="View.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="interface.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="map.png" />

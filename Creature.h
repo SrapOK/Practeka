@@ -26,13 +26,13 @@ protected:
 	float _speed;
 	sf::FloatRect box;
 
-	int _width, _height;
+	int _width, _height, _hp;
 	sf::Sprite _sprite;
 	std::map<std::string, Animation*> animations;
 	
 
 public:
-	Creature(int __x, int __y, int __width, int __height);
+	Creature(int __x, int __y, int __width, int __height, int __hp);
 	void add_animation(Animation*);
 	float& x(void);
 	float& y(void);
@@ -40,6 +40,7 @@ public:
 	bool alive(void);
 	float dx(void) const;
 	float dy(void) const;
+	int hp(void);
 	float& width(void);
 	float& height(void);
 	const sf::Sprite& sprite(void) const;
