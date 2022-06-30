@@ -6,6 +6,7 @@
 #include <memory>
 #include <list>
 #include <deque>
+#include <deque>
 #include <exception>
 extern sf::RenderWindow window;
 
