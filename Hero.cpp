@@ -6,7 +6,7 @@ void Hero::move(void)
     collision_x();
 
     this->y() += _dy;
-    on_ground = false;
+    _on_ground = false;
     collision_y();
 
     //std::cout << _dx << '\t' << _dy << std::endl;
@@ -29,14 +29,14 @@ void Hero::get_command(float time)
         _dx = -_speed * time;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        if (up_is_pressed == true) {
+        if (_up_is_pressed == true) {
             animations["up"]->play(time);
             _sprite = animations["up"]->get_sprite();
-            if (on_ground) _dy += -_height / 1.8;
+            if (_on_ground) _dy += -_height / 1.8;
         }
-        up_is_pressed = false;
+        _up_is_pressed = false;
     }
-    if (on_ground == false) {
+    if (_on_ground == false) {
         if (_dy < 0) {
             animations["up"]->play(time);
             _sprite = animations["up"]->get_sprite();
@@ -49,6 +49,6 @@ void Hero::get_command(float time)
         animations["base"]->play(time);
         _sprite = animations["base"]->get_sprite();
     }
-    if (!on_ground) _dy += 0.035 * time;
+    if (!_on_ground) _dy += 0.035 * time;
 
 }

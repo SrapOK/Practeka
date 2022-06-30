@@ -16,8 +16,9 @@ extern Map mapee;
 class Creature
 {
 protected:
-	bool alive;
-	bool up_is_pressed;
+	bool _alive;
+	bool _up_is_pressed;
+	bool _on_ground;
 	bool collision_x();
 	bool collision_y();
 	std::string _name;
@@ -28,13 +29,15 @@ protected:
 	int _width, _height;
 	sf::Sprite _sprite;
 	std::map<std::string, Animation*> animations;
-	bool on_ground;
+	
 
 public:
 	Creature(int __x, int __y, int __width, int __height);
 	void add_animation(Animation*);
 	float& x(void);
 	float& y(void);
+	
+	bool alive(void);
 	float dx(void) const;
 	float dy(void) const;
 	float& width(void);
@@ -45,6 +48,7 @@ public:
 	void set_default_sprite(sf::Texture& __Texture_part);
 	virtual void get_command(float) = 0;
 	virtual void move(void) = 0;
+	void kill(void);
 	virtual ~Creature() {};
 };
 

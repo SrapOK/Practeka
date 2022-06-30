@@ -19,10 +19,13 @@ void Enemy::get_command(float time)
 void Enemy::move(void)
 {
 	this->x() += _dx;
-	if (collision_x()) direction *= -1;
+	if (collision_x()) {
+		direction *= -1;
+		kill();
+	}
 
 	this->y() += _dy;
-	on_ground = false;
+	_on_ground = false;
 	collision_y();
 
 
