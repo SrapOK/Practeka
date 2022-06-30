@@ -30,7 +30,7 @@ protected:
 	bool on_ground;
 
 public:
-	Creature(float __x, float __y, int __width, int __height);
+	Creature(int __x, int __y, int __width, int __height);
 	void add_animation(Animation*);
 	float& x(void);
 	float& y(void);
@@ -44,8 +44,8 @@ public:
 	void set_default_sprite(sf::Texture& __Texture_part);
 	void get_command(float);
 	void move(void);
-//	int grtVector2f();
-	//virtual void update(float) = 0;
+	//	int grtVector2f();
+		//virtual void update(float) = 0;
 };
 
 #endif // !CREATURE_H
