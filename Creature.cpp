@@ -68,7 +68,7 @@ bool Creature::collision_x()
             }
         }
     }
-    std::cout << "Colx " << flag << std::endl;
+    std::cout << this->x() << "      " << this->y() << std::endl;
     return flag;
 }
 bool Creature::collision_y()
@@ -83,7 +83,7 @@ bool Creature::collision_y()
             }
         }
     }
-    //std::cout << "Coly " << flag << std::endl;
+    std::cout << this->x() << "      " << this->y() << std::endl;
     return flag;
 }
 
