@@ -16,12 +16,15 @@ Manager manager;
 int main(int artv, char** argc)
 {
     Creature* hero = new Hero(100, 320, 16, 16);
-    Creature* grip = new Enemy(200, 320, 16, 16);
+    Creature* grip = new Enemy(844, 240, 16, 16);
     Animation* right = new Animation("right", "Walk.png", 0, 0, 16, 16);
     Animation* left = new Animation("left", "Walk.png", 16, 0, -16, 16);
     Animation* up = new Animation("up", "Jump.png", 0, 0, 16, 16);
     Animation* fall = new Animation("fall", "Fall.png", 0, 0, 16, 16);
     Animation* base = new Animation("base", "base.png", 0, 0, 16, 16, 0.003);
+
+    Animation* baseGripR = new Animation("baseGripR", "simples_pimples.png", 417, 208, 16, 16, 0.003, 2);
+    Animation* baseGripL = new Animation("baseGripL", "simples_pimples.png", 417, 208, -16, 16, 0.003, 2);
 
     hero->add_animation(right);
     hero->add_animation(left);
@@ -29,8 +32,10 @@ int main(int artv, char** argc)
     hero->add_animation(fall);
     hero->add_animation(base);
     hero->set_default_sprite(*base);
-    grip->add_animation(base);
 
+    grip->add_animation(baseGripR);
+    grip->add_animation(baseGripL);
+    
     view1.reset(sf::FloatRect(0, 0, 200, 200));
     sf::Clock clock;
 
