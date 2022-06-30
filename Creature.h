@@ -17,7 +17,7 @@ class Creature
 {
 protected:
 	std::string _name;
-	int _x, _y;
+	float _x, _y;
 	float _dx, _dy;
 	float _speed;
 
@@ -26,10 +26,10 @@ protected:
 	std::map<std::string, Animation*> animations;
 
 public:
-	Creature(int __x, int __y, int __width, int __height);
+	Creature(float __x, float __y, int __width, int __height);
 	void add_animation(Animation*);
-	int x(void) const;
-	int y(void) const;
+	float x(void) const;
+	float y(void) const;
 	float dx(void) const;
 	float dy(void) const;
 	int width(void) const;
