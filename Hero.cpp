@@ -52,3 +52,11 @@ void Hero::get_command(float time)
     if (!_on_ground) _dy += 0.035 * time;
 
 }
+
+void Hero::dammage(void) {
+    std::cout << _hp << std::endl;
+    _hp -= 1;
+    if (_hp = 0) {
+        kill();
+    }
+}
