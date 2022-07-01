@@ -24,7 +24,7 @@ public:
 	sf::Sprite& get_sprite(void);
 	sf::Texture& get_texture(void);
 	std::string animation_name(void);
-	Animation(std::string __animation_name, std::string __path, int __x, int __y, int __width, int __height, float __speed = 0.014);
+	Animation(std::string __animation_name, std::string __path, int __x, int __y, int __width, int __height, float __speed = 0.014, int __frame = -1);
 	void play(float);
 	Animation() = default;
 };

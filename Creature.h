@@ -26,7 +26,7 @@ protected:
 	float _speed;
 	sf::FloatRect box;
 
-	int _width, _height;
+	int _width, _height, _hp;
 	sf::Sprite _sprite;
 	std::map<std::string, Animation*> animations;
 	
@@ -42,13 +42,14 @@ public:
 	float dy(void) const;
 	float& width(void);
 	float& height(void);
+	int hp(void);
+	void kill(void);
 	const sf::Sprite& sprite(void) const;
 	void set_default_sprite(std::string __path);
 	void set_default_sprite(Animation& __Anim_part);
 	void set_default_sprite(sf::Texture& __Texture_part);
 	virtual void get_command(float) = 0;
 	virtual void move(void) = 0;
-	void kill(void);
 	virtual ~Creature() {};
 };
 

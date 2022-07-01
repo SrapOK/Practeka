@@ -17,6 +17,11 @@ void Hero::move(void)
     getPlayerCoordinateForView(this->x(), this->y());
 }
 
+Hero::Hero(int __x, int __y, int __width, int __height) : Creature(__x, __y, __width, __height)
+{
+    _hp = 3;
+}
+
 void Hero::get_command(float time)
 {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
@@ -52,4 +57,12 @@ void Hero::get_command(float time)
     }
     if (!_on_ground) _dy += 0.027 * time;
 
+}
+
+void Hero::dammage(void) {
+    std::cout << _hp << std::endl;
+    _hp -= 1;
+    if (_hp = 0) {
+        kill();
+    }
 }

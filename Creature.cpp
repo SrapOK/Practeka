@@ -1,12 +1,14 @@
 #include "Creature.h"
 #include "Manager.h"
+#include "Hero.h"
+#include "interface.h"
 #include <fstream>
 
 extern Manager manager;
 
 
 Creature::Creature(int __x, int __y, int __width, int __height)
-    : _width(__width), _height(__height), _dx(0), _dy(0), _speed(0.14), _on_ground(false), _up_is_pressed(false), _alive(true)
+    : _width(__width), _height(__height), _dx(0), _dy(0), _speed(0.1), _on_ground(false), _up_is_pressed(false), _alive(true)
 {
     box.left = __x;
     box.top = __y;
@@ -14,6 +16,7 @@ Creature::Creature(int __x, int __y, int __width, int __height)
 
     manager.add(this);
 }
+
 
 void Creature::add_animation(Animation* an)
 {
@@ -47,6 +50,11 @@ float Creature::dy(void) const
     return _dy;
 }
 
+int Creature::hp(void)
+{
+    return _hp;
+}
+
 float& Creature::width(void)
 {
     return box.width;
@@ -63,6 +71,7 @@ const sf::Sprite& Creature::sprite(void) const
 }
 
 
+
 bool Creature::collision_x()
 {
     bool flag = false;
@@ -73,9 +82,27 @@ bool Creature::collision_x()
                 if (_dx > 0) this->x() = j * _width - _width;
                 if (_dx < 0)  this->x() = j * _width + _width;
             }
+            if (mapee.at(i, j) == 's') {
+                _hp -= 1;
+                std::cout << _hp << std::endl;
+                this->x() = 100;
+                this->y() = 320;
+                if (_hp == 0) {
+                    /*sf::Font font;
+                    font.loadFromFile("Manrope-ExtraLight.ttf");
+                    sf::Text text("", font, 15);
+                    text.setString("Pizda tebe chelik");
+                    text.setPosition(0, 0);
+                    window.draw(text);*/
+                    //_text = text;
+                    //die();
+                    kill();
+                }
+            }
+
         }
     }
-    std::cout << "Colx " << flag << std::endl;
+    //std::cout << this->x() << "      " << this->y() << std::endl;
     return flag;
 }
 bool Creature::collision_y()
@@ -88,9 +115,26 @@ bool Creature::collision_y()
                 if (_dy > 0) { this->y() = i * _height - _height;  _dy = 0;   _on_ground = true; _up_is_pressed = true; }
                 if (_dy < 0) { this->y() = i * _height + _height;  _dy = 0; }
             }
+            if (mapee.at(i, j) == 's') {
+                _hp -= 1;
+                std::cout << _hp << std::endl;
+                this->x() = 100;
+                this->y() = 320;
+                if (_hp == 0) {
+                    /*sf::Font font;
+                    font.loadFromFile("Manrope-ExtraLight.ttf");
+                    sf::Text text("", font, 15);
+                    text.setString("Pizda tebe chelik");
+                    text.setPosition(0, 0);
+                    window.draw(text);*/
+                    //_text = text;
+                    //die();
+                    kill();
+                }
+            }
         }
     }
-    //std::cout << "Coly " << flag << std::endl;
+    //std::cout << this->x() << "      " << this->y() << std::endl;
     return flag;
 }
 

@@ -44,6 +44,8 @@ void Map::initialize(void)
 	Animation* up = new Animation("up", "Jump.png", 0, 0, 16, 16);
 	Animation* fall = new Animation("fall", "Fall.png", 0, 0, 16, 16);
 	Animation* base = new Animation("base", "base.png", 0, 0, 16, 16, 0.003);
+	Animation* baseGripR = new Animation("baseGripR", "simples_pimples.png", 417, 208, 16, 16, 0.003, 2);
+	Animation* baseGripL = new Animation("baseGripL", "simples_pimples.png", 417, 208, -16, 16, 0.003, 2);
 
 	for (int i = 0; i < HEIGHT_MAP; i++) {
 		for (int j = 0; j < WIDTH_MAP; j++) {
@@ -59,8 +61,8 @@ void Map::initialize(void)
 			}
 			if (TileMap2[i][j] == 'e') {
 				Creature* grip = new Enemy(j * 16, i * 16, 16, 16);
-
-				grip->add_animation(base);
+				grip->add_animation(baseGripR);
+				grip->add_animation(baseGripL);
 			}
 		}
 	}
