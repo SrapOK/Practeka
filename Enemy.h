@@ -9,5 +9,7 @@ public:
 	void get_command(float time) override;
 	void move(void) override;
 	virtual ~Enemy() {};
+	int getPositionX(void);
+	int getPositionY(void);
 };
 

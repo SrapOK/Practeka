@@ -38,3 +38,15 @@ void Enemy::move(void)
 
 	_dx = 0;
 }
+
+int Enemy::getPositionX(void) {
+	int x;
+	x = this->y() / 16;
+	return x;
+}
+
+int Enemy::getPositionY(void) {
+	int y;
+	y = this->y() / 16;
+	return y;
+}

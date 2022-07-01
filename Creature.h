@@ -21,6 +21,7 @@ protected:
 	bool _on_ground;
 	bool collision_x();
 	bool collision_y();
+	//void collision_obj();
 	std::string _name;
 	float _dx, _dy;
 	float _speed;
