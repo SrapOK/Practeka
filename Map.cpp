@@ -40,10 +40,13 @@ void Map::print() {
 void Map::initialize(void)
 {
 	Animation* right = new Animation("right", "Walk.png", 0, 0, 16, 16);
-	Animation* left = new Animation("left", "Walk.png", 16, 0, -16, 16);
-	Animation* up = new Animation("up", "Jump.png", 0, 0, 16, 16);
-	Animation* fall = new Animation("fall", "Fall.png", 0, 0, 16, 16);
-	Animation* base = new Animation("base", "base.png", 0, 0, 16, 16, 0.003);
+	Animation* left = new Animation("left", "Walk.png", 0, 0, -16, 16);
+	Animation* upR = new Animation("upR", "Jump.png", 0, 0, 16, 16);
+	Animation* upL = new Animation("upL", "Jump.png", 0, 0, -16, 16);
+	Animation* fallR = new Animation("fallR", "Fall.png", 0, 0, 16, 16);
+	Animation* fallL = new Animation("fallL", "Fall.png", 0, 0, -16, 16);
+	Animation* base1 = new Animation("base1", "base.png", 0, 0, 16, 16, 0.003);
+	Animation* base2 = new Animation("base2", "base.png", 0, 0, -16, 16, 0.003);
 	Animation* baseGripR = new Animation("baseGripR", "simples_pimples.png", 417, 208, 16, 16, 0.003, 2);
 	Animation* baseGripL = new Animation("baseGripL", "simples_pimples.png", 417, 208, -16, 16, 0.003, 2);
 
@@ -55,9 +58,12 @@ void Map::initialize(void)
 
 				hero->add_animation(right);
 				hero->add_animation(left);
-				hero->add_animation(up);
-				hero->add_animation(fall);
-				hero->add_animation(base);
+				hero->add_animation(upR);
+				hero->add_animation(upL);
+				hero->add_animation(fallR);
+				hero->add_animation(fallL);
+				hero->add_animation(base1);
+				hero->add_animation(base2);
 			}
 			if (TileMap2[i][j] == 'e') {
 				Creature* grip = new Enemy(j * 16, i * 16, 16, 16);
