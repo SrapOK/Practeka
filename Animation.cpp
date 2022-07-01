@@ -38,7 +38,8 @@ void Animation::play(float __time)
 	_current_frame += _speed * __time;
 	if (_width == 0) std::cout << "Booba\n";
 	if (_current_frame > _frame_counter) _current_frame = 0;
-	if (_width < 0) _sprite.setTextureRect(sf::IntRect(abs(_width * tolower(_current_frame)) - _width + _x, _y, _width, _height));
+
+	if (_width < 0) _sprite.setTextureRect(sf::IntRect(abs(_width * tolower(_current_frame)) - _width, _y, _width, _height));
 	if (_width > 0) _sprite.setTextureRect(sf::IntRect(abs(_width * tolower(_current_frame)) + _x, _y, _width, _height));
 	
 }

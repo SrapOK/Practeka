@@ -1,5 +1,10 @@
 #include "Enemy.h"
 
+Enemy::Enemy(int __x, int __y, int __width, int __height) : Creature(__x, __y, __width, __height)
+{
+	_hp = 1;
+}
+
 void Enemy::get_command(float time)
 {
 	if (direction == -1) {
