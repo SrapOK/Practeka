@@ -6,7 +6,7 @@ extern Manager manager;
 
 
 Creature::Creature(int __x, int __y, int __width, int __height)
-    : _width(__width), _height(__height), _dx(0), _dy(0), _speed(0.1), _on_ground(false), _up_is_pressed(false), _alive(true)
+    : _width(__width), _height(__height), _dx(0), _dy(0), _speed(0.14), _on_ground(false), _up_is_pressed(false), _alive(true)
 {
     box.left = __x;
     box.top = __y;
@@ -68,7 +68,7 @@ bool Creature::collision_x()
     bool flag = false;
     for (int i = this->y() / _height; i < (this->y() + _height) / _height; i++) {
         for (int j = this->x() / _width; j < (this->x() + _width) / _width; j++) {
-            if (mapee.at(i, j) != ' ') {
+            if (!(mapee.at(i, j) == ' ' || mapee.at(i, j) == 'h' || mapee.at(i, j) == 'e')) {
                 flag = true;
                 if (_dx > 0) this->x() = j * _width - _width;
                 if (_dx < 0)  this->x() = j * _width + _width;
@@ -83,7 +83,7 @@ bool Creature::collision_y()
     bool flag = false;
     for (int i = this->y() / _height; i < (this->y() + _height) / _height; i++) {
         for (int j = this->x() / _width; j < (this->x() + _width) / _width; j++) {
-            if (mapee.at(i, j) != ' ') {
+            if (!(mapee.at(i, j) == ' ' || mapee.at(i, j) == 'h' || mapee.at(i, j) == 'e')) {
                 flag = true;
                 if (_dy > 0) { this->y() = i * _height - _height;  _dy = 0;   _on_ground = true; _up_is_pressed = true; }
                 if (_dy < 0) { this->y() = i * _height + _height;  _dy = 0; }

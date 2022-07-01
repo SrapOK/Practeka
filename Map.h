@@ -27,6 +27,7 @@ public:
 	sf::String TileMap2[25];
 	Map(std::string _File, std::string _tile_map);
 	void print(void);
+	void initialize(void);
 	sf::String* Get_Map();
 	char at(int _x, int _y);
 	int Get_HEIGHT_MAP();

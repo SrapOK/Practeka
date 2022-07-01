@@ -14,6 +14,7 @@ void Hero::move(void)
     _sprite.move(this->x(), this->y());
 
     _dx = 0;
+    getPlayerCoordinateForView(this->x(), this->y());
 }
 
 void Hero::get_command(float time)
@@ -32,7 +33,7 @@ void Hero::get_command(float time)
         if (_up_is_pressed == true) {
             animations["up"]->play(time);
             _sprite = animations["up"]->get_sprite();
-            if (_on_ground) _dy += -_height / 1.8;
+            if (_on_ground) _dy += -_height / 2.6;
         }
         _up_is_pressed = false;
     }
@@ -49,6 +50,6 @@ void Hero::get_command(float time)
         animations["base"]->play(time);
         _sprite = animations["base"]->get_sprite();
     }
-    if (!_on_ground) _dy += 0.035 * time;
+    if (!_on_ground) _dy += 0.027 * time;
 
 }

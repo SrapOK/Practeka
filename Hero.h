@@ -1,5 +1,6 @@
 #pragma once
 #include "Creature.h"
+#include "View.h"
 class Hero : public Creature
 {
 public:

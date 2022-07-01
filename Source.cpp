@@ -5,7 +5,7 @@
 #include "Hero.h"
 #include "Enemy.h"
 
-sf::RenderWindow window(sf::VideoMode(600, 600), "My window");
+sf::RenderWindow window(sf::VideoMode::VideoMode(600, 600), "My window");
 Map mapee("Gameboy Tileset.png", "2.txt");
 sf::View view1;
 Manager manager;
@@ -15,6 +15,7 @@ Manager manager;
 
 int main(int artv, char** argc)
 {
+    /*
     Creature* hero = new Hero(100, 320, 16, 16);
     Creature* grip = new Enemy(200, 320, 16, 16);
     Animation* right = new Animation("right", "Walk.png", 0, 0, 16, 16);
@@ -31,10 +32,12 @@ int main(int artv, char** argc)
     hero->set_default_sprite(*base);
     grip->add_animation(base);
 
+    */
     view1.reset(sf::FloatRect(0, 0, 200, 200));
     sf::Clock clock;
 
     float last_time = 0;
+    mapee.initialize();
     while (window.isOpen()) {
         float time = clock.getElapsedTime().asMicroseconds();
         clock.restart();
@@ -47,7 +50,7 @@ int main(int artv, char** argc)
         time /= 800;
         manager.update(time);
 
-        getPlayerCoordinateForView(hero->x(), hero->y());
+        //getPlayerCoordinateForView(hero->x(), hero->y());
 
         window.setView(view1);
 

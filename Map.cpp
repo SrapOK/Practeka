@@ -1,4 +1,6 @@
 #include "Map.h"
+#include "Hero.h"
+#include "Enemy.h"
 #include <SFML/Graphics.hpp>
 
 void Map::print() {
@@ -31,6 +33,35 @@ void Map::print() {
 			s_map.setPosition(j * 16, i * 16);
 
 			window.draw(s_map);
+		}
+	}
+}
+
+void Map::initialize(void)
+{
+	Animation* right = new Animation("right", "Walk.png", 0, 0, 16, 16);
+	Animation* left = new Animation("left", "Walk.png", 16, 0, -16, 16);
+	Animation* up = new Animation("up", "Jump.png", 0, 0, 16, 16);
+	Animation* fall = new Animation("fall", "Fall.png", 0, 0, 16, 16);
+	Animation* base = new Animation("base", "base.png", 0, 0, 16, 16, 0.003);
+
+	for (int i = 0; i < HEIGHT_MAP; i++) {
+		for (int j = 0; j < WIDTH_MAP; j++) {
+			if (TileMap2[i][j] == 'h') {
+
+				Creature* hero = new Hero(j * 16, i * 16, 16, 16);
+
+				hero->add_animation(right);
+				hero->add_animation(left);
+				hero->add_animation(up);
+				hero->add_animation(fall);
+				hero->add_animation(base);
+			}
+			if (TileMap2[i][j] == 'e') {
+				Creature* grip = new Enemy(j * 16, i * 16, 16, 16);
+
+				grip->add_animation(base);
+			}
 		}
 	}
 }
