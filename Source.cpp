@@ -49,15 +49,14 @@ int main(int artv, char** argc)
     float last_time = 0;
     mapee.initialize();
     while (window.isOpen()) {
-        float time = clock.getElapsedTime().asMicroseconds();
-        clock.restart();
-
-
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) window.close();
         }
+        float time = clock.getElapsedTime().asMicroseconds();
+        clock.restart();
         time /= 800;
+        std::cout << time << std::endl;
         manager.update(time);
 
         //if (hero->)

@@ -2,6 +2,7 @@
 
 
 
+
 void Manager::update(float _time)
 {
 	for (size_t i = 0; i < list.size(); i++) {
@@ -19,6 +20,7 @@ void Manager::update(float _time)
 void Manager::add(Creature* _item)
 {
 	if (_item == nullptr) throw std::domain_error("void Manager::add(T* item)");
+
 	list.push_back(_item);
 }
 
