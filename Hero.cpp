@@ -106,9 +106,12 @@ int Hero::get_y() {
     return _y;
 }
 
-void Hero::damage(void)
-{
-
+void Hero::dammage(void) {
+    std::cout << _hp << std::endl;
+    _hp -= 1;
+    if (_hp = 0) {
+        kill();
+    }
 }
 
 
