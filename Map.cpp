@@ -1,6 +1,7 @@
 #include "Map.h"
 #include "Hero.h"
 #include "Enemy.h"
+#include "Observer.h"
 #include <SFML/Graphics.hpp>
 
 void Map::print() {
@@ -55,6 +56,7 @@ void Map::initialize(void)
 			if (TileMap2[i][j] == 'h') {
 
 				Creature* hero = new Hero(j * 16, i * 16, 16, 16);
+				//Observer heros();
 
 				hero->add_animation(right);
 				hero->add_animation(left);
@@ -64,6 +66,9 @@ void Map::initialize(void)
 				hero->add_animation(fallL);
 				hero->add_animation(base1);
 				hero->add_animation(base2);
+				std::cout << hero->x() << std::endl;
+				std::cout << hero->y() << std::endl;
+				//Observer* observer1 = new Observer(*hero);
 			}
 			if (TileMap2[i][j] == 'e') {
 				Creature* grip = new Enemy(j * 16, i * 16, 16, 16);
@@ -86,6 +91,8 @@ int Map::Get_HEIGHT_MAP() {
 int Map::Get_WIDTH_MAP() {
 	return WIDTH_MAP;
 }
+
+
 
 Map::Map(std::string _File, std::string _tile_map) : tile_map(_tile_map), File(_File) {
 
