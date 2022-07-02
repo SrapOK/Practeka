@@ -1,4 +1,5 @@
 #include "Hero.h"
+extern Manager manager;
 
 void Hero::move(void)
 {
@@ -8,9 +9,17 @@ void Hero::move(void)
     this->y() += _dy;
     _on_ground = false;
     collision_y();
-
-    //collision_obj();
-    //std::cout << _dx << '\t' << _dy << std::endl;
+    for (int i = 0; i < manager.list.size(); i++) {
+        if (this != manager.list[i]) {
+            float tmp_x = manager.list[i]->x();
+            float tmp_y = manager.list[i]->y();
+            int tmp_width = manager.list[i]->width();
+            int tmp_height = manager.list[i]->height();
+            if (box.intersects(sf::FloatRect(tmp_x, tmp_y, tmp_width, tmp_height))) {
+                damage();
+            }
+        }
+    }
 
     _sprite.move(this->x(), this->y());
     if (_dx != 0) {
@@ -43,7 +52,9 @@ void Hero::get_command(float time)
         if (_up_is_pressed == true) {
             animations["upR"]->play(time);
             _sprite = animations["upR"]->get_sprite();
+
             if (_on_ground) _dy += -_height / 2.8 * time * _speed;
+
         }
         _up_is_pressed = false;
     }
@@ -51,17 +62,16 @@ void Hero::get_command(float time)
         if (_up_is_pressed == true) {
             animations["upL"]->play(time);
             _sprite = animations["upL"]->get_sprite();
+
             if (_on_ground) _dy += -_height / 2.8 * time * _speed;
         }
         _up_is_pressed = false;
     }
     if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) and _pdx > 0) {
-        //std::cout << _pdx << std::endl;
         animations["base1"]->play(time);
         _sprite = animations["base1"]->get_sprite();
     }
     if (!(sf::Keyboard::isKeyPressed(sf::Keyboard::Right) || sf::Keyboard::isKeyPressed(sf::Keyboard::Left) || sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) and _pdx < 0) {
-        //std::cout << _pdx << std::endl;
         animations["base2"]->play(time);
         _sprite = animations["base2"]->get_sprite();
     }
@@ -81,9 +91,8 @@ void Hero::get_command(float time)
             _sprite = animations["fallL"]->get_sprite();
         }
     }
-    //std::cout << _pdx << "dfh" << std::endl;
     
-    if (!_on_ground) _dy += 0.027 * time;
+    if (!_on_ground) _dy += 0.03 * time;
 
 }
 
@@ -94,10 +103,9 @@ int Hero::get_y() {
     return _y;
 }
 
-void Hero::dammage(void) {
-    std::cout << _hp << std::endl;
+void Hero::damage(void) {
     _hp -= 1;
-    if (_hp = 0) {
-        kill();
-    }
+    this->x() = 100;
+    this->y() = 320;
+    if (_hp <= 0) kill();
 }

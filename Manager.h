@@ -6,8 +6,8 @@
 #include <memory>
 #include <list>
 #include <deque>
-#include <deque>
 #include <exception>
+
 extern sf::RenderWindow window;
 
 
@@ -15,10 +15,11 @@ extern sf::RenderWindow window;
 class Manager
 {
 private:
-	std::deque <Creature*> list;
 public:
+	std::deque <Creature*> list;
 	void update(float _time);
 	void add(Creature*);
+
 	void display(void);
 };
 
