@@ -1,7 +1,7 @@
 #include "Creature.h"
 #include "Manager.h"
 #include "Map.h"
-#include "Observer.h"
+#include "Meny.h"
 #include "View.h"
 #include "Hero.h"
 #include "Enemy.h"
@@ -9,6 +9,7 @@
 #include <sstream>
 
 sf::RenderWindow window(sf::VideoMode::VideoMode(600, 600), "My window");
+
 Map mapee("Gameboy Tileset.png", "2.txt");
 sf::View view1;
 Manager manager;
@@ -18,6 +19,11 @@ Manager manager;
 
 int main(int artv, char** argc)
 {
+    //sf::RenderWindow window(sf::VideoMode(1376, 768), "Kychka-pc.ru 31");
+    //mapee.initialize();
+    menu(window);
+    mapee.initialize();
+
     /*
     Animation* right = new Animation("right", "Walk.png", 0, 0, 16, 16);
     Animation* left = new Animation("left", "Walk.png", 0, 0, -16, 16);
@@ -47,18 +53,30 @@ int main(int artv, char** argc)
     sf::Clock clock;
 
     float last_time = 0;
-    mapee.initialize();
+    int counter;
+    counter = 0;
+    float _time;
+    _time = 0;
     while (window.isOpen()) {
         float time = clock.getElapsedTime().asMicroseconds();
         clock.restart();
-
+        counter++;
 
         sf::Event event;
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) window.close();
         }
         time /= 800;
-        manager.update(time);
+
+        if (counter >= 20 and counter < 40) {
+            _time += time;
+        }
+        else if (counter == 41) {
+            _time /= 20;
+        }
+
+        std::cout << _time << std::endl;
+        manager.update(_time);
 
         //if (hero->)
         //getPlayerCoordinateForView(hero->x(), hero->y());
