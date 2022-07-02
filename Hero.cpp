@@ -1,4 +1,5 @@
 #include "Hero.h"
+//#include "Menu.h"
 extern Manager manager;
 
 void Hero::move(void)
@@ -110,6 +111,7 @@ void Hero::dammage(void) {
     std::cout << _hp << std::endl;
     _hp -= 1;
     if (_hp = 0) {
+
         kill();
     }
 }
