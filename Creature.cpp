@@ -7,6 +7,12 @@
 
 extern Manager manager;
 
+void Creature::damage(void) {
+    _hp -= 1;
+    if (_hp <= 0) kill();
+    this->x() = 100;
+    this->y() = 320;
+}
 
 Creature::Creature(int __x, int __y, int __width, int __height)
     : _width(__width), _height(__height), _dx(0), _dy(0), _speed(0.1), _on_ground(false), _up_is_pressed(false), _alive(true)

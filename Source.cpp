@@ -66,8 +66,6 @@ int main(int artv, char** argc)
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) window.close();
         }
-        float time = clock.getElapsedTime().asMicroseconds();
-        clock.restart();
         time /= 800;
 
         if (counter >= 20 and counter < 40) {
