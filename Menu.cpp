@@ -1,6 +1,4 @@
-#pragma once
-#include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
+#include "Menu.h"
 
 void play1(float __time, sf::Sprite& _hero_memu, float& _hx) {
 	static float _current_frame;
@@ -22,6 +20,8 @@ void play2(float __time, sf::Sprite& _grip_memu, float& _gx) {
 	std::cout << _gx << std::endl;
 }
 
+
+
 void menu(sf::RenderWindow& window) {
 	//sf::Text menuTexture1, menuTexture2, menuTexture3, aboutTexture, menuBackground;
 	sf::Font font;
@@ -31,7 +31,7 @@ void menu(sf::RenderWindow& window) {
 	PLAY.setString("PLAY");
 	PLAY.setPosition(240, 130);
 	EXET.setString("EXET");
-	EXET.setPosition(240, 130*3);
+	EXET.setPosition(240, 130 * 3);
 	//sf::Sprite menu1(menuTexture1), menu2(menuTexture2), menu3(menuTexture3), about(aboutTexture), menuBg(menuBackground);
 	bool isMenu = 1;
 	int menuNum = 0;
@@ -57,7 +57,9 @@ void menu(sf::RenderWindow& window) {
 	//Animation* fallR = new Animation("fallR", "Fall.png", 0, 0, 16, 16);
 	//Creature* hero = new Hero(16, 16, 16, 16);
 	//hero->add_animation(fallR);
+	std::cout << "c";
 	sf::Clock clock;
+	std::cout << isMenu;
 	while (isMenu)
 	{
 		float time = clock.getElapsedTime().asMicroseconds();
@@ -71,17 +73,20 @@ void menu(sf::RenderWindow& window) {
 
 		menuNum = 0;
 		window.clear(sf::Color(32, 70, 49));
-		
-		if (sf::IntRect(240, 130, 125, 55).contains(sf::Mouse::getPosition(window))) { PLAY.setFillColor(sf::Color(174, 196, 64)); menuNum = 1; play1(time, hero_memu, hx); hero_memu.setPosition(hx, hy);
+
+		if (sf::IntRect(240, 130, 125, 55).contains(sf::Mouse::getPosition(window))) {
+			PLAY.setFillColor(sf::Color(174, 196, 64)); menuNum = 1; play1(time, hero_memu, hx); hero_memu.setPosition(hx, hy);
 		}
 		else {
 			hero_memu.setPosition(50, 25); hx = 50;
 			hy = 25;
 		}
-		if (sf::IntRect(240, 130 * 3, 125, 55).contains(sf::Mouse::getPosition(window))) { EXET.setFillColor(sf::Color(174, 196, 64)); menuNum = 2; play2(time, grip_memu, gx);grip_memu.setPosition(gx, gy);
+		if (sf::IntRect(240, 130 * 3, 125, 55).contains(sf::Mouse::getPosition(window))) {
+			EXET.setFillColor(sf::Color(174, 196, 64)); menuNum = 2; play2(time, grip_memu, gx); grip_memu.setPosition(gx, gy);
 		}
-		else { grip_memu.setPosition(50, 525); gx = 50;
-		gy = 525;
+		else {
+			grip_memu.setPosition(50, 525); gx = 50;
+			gy = 525;
 		}
 
 
@@ -99,8 +104,6 @@ void menu(sf::RenderWindow& window) {
 		window.draw(grip_memu);
 		window.draw(EXET);
 		window.draw(PLAY);
-
 		window.display();
 	}
 }
-

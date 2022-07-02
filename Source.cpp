@@ -1,7 +1,7 @@
 #include "Creature.h"
 #include "Manager.h"
 #include "Map.h"
-#include "Meny.h"
+#include "Menu.h"
 #include "View.h"
 #include "Hero.h"
 #include "Enemy.h"
