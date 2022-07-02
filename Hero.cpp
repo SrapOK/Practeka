@@ -15,8 +15,11 @@ void Hero::move(void)
             float tmp_y = manager.list[i]->y();
             int tmp_width = manager.list[i]->width();
             int tmp_height = manager.list[i]->height();
-            if (box.intersects(sf::FloatRect(tmp_x, tmp_y, tmp_width, tmp_height))) {
+            if (box.intersects(sf::FloatRect(tmp_x, tmp_y, tmp_width, tmp_height)) && _dy <= 0) {
                 damage();
+            }
+            if (box.intersects(sf::FloatRect(tmp_x, tmp_y, tmp_width, tmp_height)) && _dy > 0) {
+                manager.list[i]->damage();
             }
         }
     }
@@ -103,9 +106,9 @@ int Hero::get_y() {
     return _y;
 }
 
-void Hero::damage(void) {
-    _hp -= 1;
-    this->x() = 100;
-    this->y() = 320;
-    if (_hp <= 0) kill();
+void Hero::damage(void)
+{
+
 }
+
+

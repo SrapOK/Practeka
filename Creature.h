@@ -37,6 +37,7 @@ public:
 	void add_animation(Animation*);
 	float& x(void);
 	float& y(void);
+	virtual void damage(void);
 	
 	bool alive(void);
 	float dx(void) const;
