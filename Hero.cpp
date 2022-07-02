@@ -1,4 +1,5 @@
 #include "Hero.h"
+#include "Menu.h"
 extern Manager manager;
 
 void Hero::move(void)
@@ -108,7 +109,16 @@ int Hero::get_y() {
 
 void Hero::damage(void)
 {
-
+    if (_hp <= 0) {
+        kill();
+        menu(window);
+        mapee.initialize();
+    }
+    else {
+        _hp--;
+        this->x() = 80;
+        this->y() = 320;
+    }
 }
 
 
