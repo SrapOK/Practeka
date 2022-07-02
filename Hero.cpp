@@ -23,6 +23,8 @@ void Hero::move(void)
 Hero::Hero(int __x, int __y, int __width, int __height) : Creature(__x, __y, __width, __height)
 {
     _hp = 3;
+    int _x = __x;
+    int _y = __y;
 }
 
 void Hero::get_command(float time)
@@ -41,7 +43,7 @@ void Hero::get_command(float time)
         if (_up_is_pressed == true) {
             animations["upR"]->play(time);
             _sprite = animations["upR"]->get_sprite();
-            if (_on_ground) _dy += -_height / 2.6;
+            if (_on_ground) _dy += -_height / 2;
         }
         _up_is_pressed = false;
     }
@@ -49,7 +51,7 @@ void Hero::get_command(float time)
         if (_up_is_pressed == true) {
             animations["upL"]->play(time);
             _sprite = animations["upL"]->get_sprite();
-            if (_on_ground) _dy += -_height / 2.6;
+            if (_on_ground) _dy += -_height / 2;
         }
         _up_is_pressed = false;
     }
@@ -83,6 +85,13 @@ void Hero::get_command(float time)
     
     if (!_on_ground) _dy += 0.027 * time;
 
+}
+
+int Hero::get_x() {
+    return _x;
+}
+int Hero::get_y() {
+    return _y;
 }
 
 void Hero::dammage(void) {

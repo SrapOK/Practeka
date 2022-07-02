@@ -149,6 +149,7 @@
     <ClCompile Include="interface.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="View.cpp" />
   </ItemGroup>
@@ -161,6 +162,7 @@
     <ClInclude Include="interface.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Observer.h" />
     <ClInclude Include="View.h" />
   </ItemGroup>
   <ItemGroup>

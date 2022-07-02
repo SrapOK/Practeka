@@ -1,6 +1,7 @@
 #include "Creature.h"
 #include "Manager.h"
 #include "Map.h"
+#include "Observer.h"
 #include "View.h"
 #include "Hero.h"
 #include "Enemy.h"
@@ -40,6 +41,8 @@ int main(int artv, char** argc)
     interface st();
     //hp.setPosition(-300, -300);
     */
+    
+
     view1.reset(sf::FloatRect(0, 0, 200, 200));
     sf::Clock clock;
 
@@ -57,6 +60,7 @@ int main(int artv, char** argc)
         time /= 800;
         manager.update(time);
 
+        //if (hero->)
         //getPlayerCoordinateForView(hero->x(), hero->y());
 
         window.setView(view1);
