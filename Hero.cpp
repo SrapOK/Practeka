@@ -43,7 +43,7 @@ void Hero::get_command(float time)
         if (_up_is_pressed == true) {
             animations["upR"]->play(time);
             _sprite = animations["upR"]->get_sprite();
-            if (_on_ground) _dy += -_height / 2;
+            if (_on_ground) _dy += -_height / 2.8 * time * _speed;
         }
         _up_is_pressed = false;
     }
@@ -51,7 +51,7 @@ void Hero::get_command(float time)
         if (_up_is_pressed == true) {
             animations["upL"]->play(time);
             _sprite = animations["upL"]->get_sprite();
-            if (_on_ground) _dy += -_height / 2;
+            if (_on_ground) _dy += -_height / 2.8 * time * _speed;
         }
         _up_is_pressed = false;
     }

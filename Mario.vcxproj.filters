@@ -23,6 +23,7 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="interface.h" />
     <ClInclude Include="Observer.h" />
+    <ClInclude Include="Meny.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="map.png" />

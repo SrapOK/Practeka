@@ -162,6 +162,7 @@
     <ClInclude Include="interface.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Meny.h" />
     <ClInclude Include="Observer.h" />
     <ClInclude Include="View.h" />
   </ItemGroup>

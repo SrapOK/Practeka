@@ -89,14 +89,7 @@ bool Creature::collision_x()
                 this->x() = 100;
                 this->y() = 320;
                 if (_hp == 0) {
-                    /*sf::Font font;
-                    font.loadFromFile("Manrope-ExtraLight.ttf");
-                    sf::Text text("", font, 15);
-                    text.setString("Pizda tebe chelik");
-                    text.setPosition(0, 0);
-                    window.draw(text);*/
-                    //_text = text;
-                    //die();
+                   
                     kill();
                 }
             }
