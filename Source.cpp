@@ -24,6 +24,7 @@ int main(int artv, char** argc)
     menu(window);
     mapee.initialize();
 
+
     /*
     Animation* right = new Animation("right", "Walk.png", 0, 0, 16, 16);
     Animation* left = new Animation("left", "Walk.png", 0, 0, -16, 16);
@@ -83,7 +84,7 @@ int main(int artv, char** argc)
         //if (hero->)
         //getPlayerCoordinateForView(hero->x(), hero->y());
 
-        //window.setView(view1);
+        window.setView(view1);
 
         window.clear();
         
