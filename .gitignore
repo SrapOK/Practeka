@@ -10,7 +10,7 @@
 *.userosscache
 *.sln.docstates
 *.exe
-.vs
+*.vs
 *.png
 *.git
 x64
