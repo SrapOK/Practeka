@@ -107,9 +107,12 @@ int Hero::get_y() {
     return _y;
 }
 
+/////////////////////////////////////ВЫЗЫВАЕТСЯ ДВАЖДЫ нет или просто хп равро нулю или он ..возраждается в другом челике и отнего умирает..////////////////////////////////////////// 
 void Hero::damage(void)
 {
-    if (_hp <= 0) {
+    std::cout << _hp << std::endl;
+    if (_hp == 0) {
+        std::cout << "kill" << std::endl;
         kill();
         menu(window);
         mapee.initialize();

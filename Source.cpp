@@ -51,7 +51,8 @@ int main(int artv, char** argc)
 
     view1.reset(sf::FloatRect(0, 0, 200, 200));
     sf::Clock clock;
-
+    bool fl = 0;
+    //fl = 0;
     float last_time = 0;
     int counter;
     counter = 0;
@@ -68,15 +69,17 @@ int main(int artv, char** argc)
         }
         time /= 800;
 
-        if (counter >= 20 and counter < 40) {
+        if (counter >= 20 and counter < 60) {
             _time += time;
+            manager.update(time);
         }
-        else if (counter == 41) {
-            _time /= 20;
+        else if (counter == 61) {
+            _time /= 40;
+            fl = 1;
         }
-
-        std::cout << _time << std::endl;
-        manager.update(_time);
+        if (fl == 1) manager.update(_time);
+        //std::cout << _time << std::endl;
+        
 
         //if (hero->)
         //getPlayerCoordinateForView(hero->x(), hero->y());
