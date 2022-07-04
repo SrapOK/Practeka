@@ -77,14 +77,13 @@ int main(int artv, char** argc)
             _time /= 40;
             fl = 1;
         }
+
         if (fl == 1) manager.update(_time);
         //std::cout << _time << std::endl;
-        
-
         //if (hero->)
         //getPlayerCoordinateForView(hero->x(), hero->y());
 
-        window.setView(view1);
+        //window.setView(view1);
 
         window.clear();
         
