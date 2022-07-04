@@ -9,7 +9,7 @@ extern Manager manager;
 
 void Creature::damage(void) {
     _hp--;
-    if (_hp <= 0) kill();
+    if (_hp <= 0 && this->alive()) kill();
     this->x() = 100;
     this->y() = 320;
 }

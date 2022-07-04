@@ -1,6 +1,8 @@
 #include "Hero.h"
 #include "Menu.h"
+
 extern Manager manager;
+extern int SCORE;
 
 void Hero::move(void)
 {
@@ -21,6 +23,7 @@ void Hero::move(void)
             }
             if (box.intersects(sf::FloatRect(tmp_x, tmp_y, tmp_width, tmp_height)) && _dy > 0) {
                 manager.list[i]->damage();
+                _score += 10;
             }
         }
     }
@@ -30,15 +33,17 @@ void Hero::move(void)
         _pdx = _dx;
         _dx = 0;
     }
+    SCORE = _score;
+    std::cout << "_s " << _score << std::endl;
     getPlayerCoordinateForView(this->x(), this->y());
 }
 
 Hero::Hero(int __x, int __y, int __width, int __height) : Creature(__x, __y, __width, __height)
 {
-    std::cout << "New: " << this << std::endl;
     _hp = 1;
     int _x = __x;
     int _y = __y;
+    _score = 0;
 }
 
 void Hero::get_command(float time)
@@ -108,12 +113,10 @@ int Hero::get_y() {
     return _y;
 }
 
-/////////////////////////////////////ÂÛÇÛÂÀÅÒÑß ÄÂÀÆÄÛ íåò èëè ïðîñòî õï ðàâðî íóëþ èëè îí ..âîçðàæäàåòñÿ â äðóãîì ÷åëèêå è îòíåãî óìèðàåò..////////////////////////////////////////// 
 void Hero::damage(void)
 {
     if (_hp <= 0 && this->alive()) {
         kill();
-        std::cout << "Kill: " << this << std::endl;
         menu(window);
         mapee.initialize();
     }

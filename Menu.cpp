@@ -4,21 +4,17 @@ void play1(float __time, sf::Sprite& _hero_memu, float& _hx) {
 	static float _current_frame;
 	_current_frame += 0.00002 * __time;
 	if (_current_frame > 4) _current_frame = 0;
-	//std::cout << _current_frame << std::endl;
 	_hero_memu.setTextureRect(sf::IntRect(16 * int(_current_frame), 0, 16, 16));
 	_hx = _hx + 0.0002 * __time;
-	//std::cout << _hx << " h" << std::endl;
 }
 
 void play2(float __time, sf::Sprite& _grip_memu, float& _gx) {
 	static float _current_frame;
 	_current_frame += 0.000004 * __time;
 	if (_current_frame > 2) _current_frame = 0;
-	//std::cout << _current_frame << std::endl;
 	_grip_memu.setTextureRect(sf::IntRect(16 * int(_current_frame) + 417, 208, 16, 16));
 	_gx = _gx + 0.0002 * __time;
 	//_gy++;
-	//std::cout << _gx << " g" << std::endl;
 }
 
 
@@ -43,7 +39,6 @@ void menu(sf::RenderWindow& window) {
 	hero_memu.setTextureRect(sf::IntRect(0, 0, 16, 16));
 	float hx = 50;
 	int hy = 25;
-	//std::cout << hx << " h" << std::endl;
 	hero_memu.setPosition(hx, hy);
 	hero_memu.setScale(3.f, 3.f);
 	sf::Texture _grip_memu;
@@ -53,19 +48,15 @@ void menu(sf::RenderWindow& window) {
 	grip_memu.setTextureRect(sf::IntRect(417, 208, 16, 16));
 	float gx = 50;
 	int gy = 525;
-	//std::cout << gx << " g" <<std::endl;
 	grip_memu.setPosition(gx, gy);
 	grip_memu.setScale(3.f, 3.f);
 	//Animation* fallR = new Animation("fallR", "Fall.png", 0, 0, 16, 16);
 	//Creature* hero = new Hero(16, 16, 16, 16);
 	//hero->add_animation(fallR);
-	//std::cout << "c";
 	sf::Clock clock;
 	
-	//std::cout << isMenu;
 	while (isMenu)
 	{
-		//std::cout << isMenu;
 		float time = clock.getElapsedTime().asMicroseconds();
 		clock.restart();
 		sf::Event event;
