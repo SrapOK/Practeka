@@ -19,6 +19,7 @@ void Map::print() {
 			}
 			*/
 			if (TileMap2[i][j] == 'J')  s_map.setTextureRect(sf::IntRect(32, 176, 16, 16));
+			if (TileMap2[i][j] == 'M')  s_map.setTextureRect(sf::IntRect(64, 192, 16, 16));
 			if (TileMap2[i][j] == 'F')  s_map.setTextureRect(sf::IntRect(16, 48, 16, 16));
 			if (TileMap2[i][j] == 'Z')  s_map.setTextureRect(sf::IntRect(128, 96, 16, 16));
 			if (TileMap2[i][j] == 'Y')  s_map.setTextureRect(sf::IntRect(0, 144, 16, 16));

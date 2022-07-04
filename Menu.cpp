@@ -19,16 +19,22 @@ void play2(float __time, sf::Sprite& _grip_memu, float& _gx) {
 
 
 
-void menu(sf::RenderWindow& window) {
+void menu(sf::RenderWindow& window, int _tip) {
 	//sf::Text menuTexture1, menuTexture2, menuTexture3, aboutTexture, menuBackground;
 	sf::Font font;
 	font.loadFromFile("Manrope-ExtraLight.ttf");
 	sf::Text PLAY("", font, 55);
 	sf::Text EXET("", font, 55);
+	sf::Text VIN("", font, 55);
+	sf::Text LOSS("", font, 55);
 	PLAY.setString("PLAY");
 	PLAY.setPosition(240, 130);
 	EXET.setString("EXET");
 	EXET.setPosition(240, 130 * 3);
+	VIN.setString("  VIN");
+	VIN.setPosition(240, 130 * 2);
+	LOSS.setString("LOSS");
+	LOSS.setPosition(240, 130 * 2);
 	//sf::Sprite menu1(menuTexture1), menu2(menuTexture2), menu3(menuTexture3), about(aboutTexture), menuBg(menuBackground);
 	bool isMenu = 1;
 	int menuNum = 0;
@@ -65,6 +71,7 @@ void menu(sf::RenderWindow& window) {
 		}
 		PLAY.setFillColor(sf::Color(82, 127, 57));
 		EXET.setFillColor(sf::Color(82, 127, 57));
+		VIN.setFillColor(sf::Color::Red);
 
 		menuNum = 0;
 		//window.clear(sf::Color(32, 70, 49));
@@ -98,6 +105,8 @@ void menu(sf::RenderWindow& window) {
 		window.clear();
 		window.setView(window.getDefaultView());
 		window.clear(sf::Color(32, 70, 49));
+		if (_tip == 3)window.draw(VIN);
+		if (_tip == 2)window.draw(LOSS);
 		window.draw(hero_memu);
 		window.draw(grip_memu);
 		window.draw(EXET);
@@ -105,3 +114,19 @@ void menu(sf::RenderWindow& window) {
 		window.display();
 	}
 }
+
+/*void vin(sf::RenderWindow& window) {
+	sf::Font font;
+	font.loadFromFile("Manrope-ExtraLight.ttf");
+	sf::Text PLAY("", font, 55);
+	sf::Text EXET("", font, 55);
+	bool isMenu = 1;
+	int menuNum = 0;
+	while (isMenu) {
+		window.clear();
+		window.setView(window.getDefaultView());
+		window.clear(sf::Color(32, 70, 49));
+		
+		window.display();
+	}
+}*/
