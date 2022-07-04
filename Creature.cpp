@@ -86,7 +86,7 @@ bool Creature::collision_x()
     bool flag = false;
     for (int i = this->y() / _height; i < (this->y() + _height) / _height; i++) {
         for (int j = this->x() / _width; j < (this->x() + _width) / _width; j++) {
-            if (!(mapee.at(i, j) == ' ' || mapee.at(i, j) == 'h' || mapee.at(i, j) == 'e')) {
+            if (!(mapee.at(i, j) == ' ' || mapee.at(i, j) == 'h' || mapee.at(i, j) == 'e' || mapee.at(i, j) == 'm')) {
                 flag = true;
                 if (_dx > 0) this->x() = j * _width - _width;
                 if (_dx < 0)  this->x() = j * _width + _width;
@@ -104,7 +104,7 @@ bool Creature::collision_y()
     bool flag = false;
     for (int i = this->y() / _height; i < (this->y() + _height) / _height; i++) {
         for (int j = this->x() / _width; j < (this->x() + _width) / _width; j++) {
-            if (!(mapee.at(i, j) == ' ' || mapee.at(i, j) == 'h' || mapee.at(i, j) == 'e')) {
+            if (!(mapee.at(i, j) == ' ' || mapee.at(i, j) == 'h' || mapee.at(i, j) == 'e' || mapee.at(i, j) == 'm')) {
                 flag = true;
                 if (_dy > 0) { this->y() = i * _height - _height;  _dy = 0;   _on_ground = true; _up_is_pressed = true; }
                 if (_dy < 0) { this->y() = i * _height + _height;  _dy = 0; }
