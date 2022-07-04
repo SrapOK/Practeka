@@ -8,7 +8,7 @@
 extern Manager manager;
 
 void Creature::damage(void) {
-    _hp -= 1;
+    _hp--;
     if (_hp <= 0) kill();
     this->x() = 100;
     this->y() = 320;
@@ -92,13 +92,7 @@ bool Creature::collision_x()
                 if (_dx < 0)  this->x() = j * _width + _width;
             }
             if (mapee.at(i, j) == 's') {
-                _hp -= 1;
-                std::cout << _hp << std::endl;
-                this->x() = 100;
-                this->y() = 320;
-                if (_hp == 0) {
-                    kill();
-                }
+                damage();
             }
 
         }
@@ -116,13 +110,7 @@ bool Creature::collision_y()
                 if (_dy < 0) { this->y() = i * _height + _height;  _dy = 0; }
             }
             if (mapee.at(i, j) == 's') {
-                _hp -= 1;
-                std::cout << _hp << std::endl;
-                this->x() = 100;
-                this->y() = 320;
-                if (_hp == 0) {
-                    kill();
-                }
+                damage();
             }
         }
     }

@@ -151,6 +151,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Observer.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="View.cpp" />
   </ItemGroup>
   <ItemGroup>
