@@ -1,5 +1,6 @@
 #include "Hero.h"
 #include "Menu.h"
+#include "Coin.h"
 
 extern Manager manager;
 extern int SCORE;
@@ -19,7 +20,10 @@ void Hero::move(void)
             int tmp_width = manager.list[i]->width();
             int tmp_height = manager.list[i]->height();
             if (box.intersects(sf::FloatRect(tmp_x, tmp_y, tmp_width, tmp_height)) && _dy <= 0) {
-                damage();
+                if (manager.list[i] == dynamic_cast<Coin*>(manager.list[i])) { manager.list[i]->damage(); }
+                else {
+                    damage();
+                }
             }
             if (box.intersects(sf::FloatRect(tmp_x, tmp_y, tmp_width, tmp_height)) && _dy > 0) {
                 manager.list[i]->damage();

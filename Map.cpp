@@ -2,6 +2,7 @@
 #include "Hero.h"
 #include "Enemy.h"
 #include "Observer.h"
+#include "Coin.h"
 #include <SFML/Graphics.hpp>
 
 extern Manager manager;
@@ -52,6 +53,7 @@ void Map::initialize(void)
 	Animation* base2 = new Animation("base2", "base.png", 0, 0, -16, 16, 0.003);
 	Animation* baseGripR = new Animation("baseGripR", "simples_pimples.png", 417, 208, 16, 16, 0.003, 2);
 	Animation* baseGripL = new Animation("baseGripL", "simples_pimples.png", 417, 208, -16, 16, 0.003, 2);
+	Animation* _coin = new Animation("_coin", "Full_Coins.png", 0, 0, 16, 16, 0.003);
 
 	for (size_t i = 0; i < manager.list.size(); i++) {
 		manager.list[i]->kill();
@@ -77,6 +79,11 @@ void Map::initialize(void)
 				Creature* grip = new Enemy(j * 16, i * 16, 16, 16);
 				grip->add_animation(baseGripR);
 				grip->add_animation(baseGripL);
+			}
+			if (TileMap2[i][j] == 'm') {
+				std::cout << "f";
+				Creature* coin = new Coin(j * 16, i * 16, 16, 16);
+				coin->add_animation(_coin);
 			}
 		}
 	}

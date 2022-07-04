@@ -23,6 +23,7 @@ int main(int artv, char** argc)
     //mapee.initialize();
     menu(window);
     mapee.initialize();
+
     sf::Font font;
     std::string string_score;
     string_score = "Score: " + std::to_string(SCORE);
@@ -31,6 +32,7 @@ int main(int artv, char** argc)
     text_score.setString(string_score);
     text_score.setFillColor(sf::Color(200, 80, 50));
     int score = 0;
+
     /*
     Animation* right = new Animation("right", "Walk.png", 0, 0, 16, 16);
     Animation* left = new Animation("left", "Walk.png", 0, 0, -16, 16);
