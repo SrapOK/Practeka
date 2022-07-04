@@ -21,7 +21,7 @@ int main(int artv, char** argc)
 {
     //sf::RenderWindow window(sf::VideoMode(1376, 768), "Kychka-pc.ru 31");
     //mapee.initialize();
-    menu(window);
+    menu(window, 1);
     mapee.initialize();
 
     sf::Font font;

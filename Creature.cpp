@@ -91,6 +91,14 @@ bool Creature::collision_x()
                 if (_dx > 0) this->x() = j * _width - _width;
                 if (_dx < 0)  this->x() = j * _width + _width;
             }
+            if (mapee.at(i, j) == 'M') {
+                //_hp = 0;
+                kill();
+                menu(window, 3);
+                mapee.initialize();
+                //vin(window);
+                //damage();
+            }
             if (mapee.at(i, j) == 's') {
                 damage();
             }
@@ -108,6 +116,14 @@ bool Creature::collision_y()
                 flag = true;
                 if (_dy > 0) { this->y() = i * _height - _height;  _dy = 0;   _on_ground = true; _up_is_pressed = true; }
                 if (_dy < 0) { this->y() = i * _height + _height;  _dy = 0; }
+            }
+            if (mapee.at(i, j) == 'M') {
+                //_hp = 0;
+                kill();
+                menu(window, 3);
+                mapee.initialize();
+                //vin(window);
+                //damage();
             }
             if (mapee.at(i, j) == 's') {
                 damage();
