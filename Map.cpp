@@ -5,6 +5,8 @@
 #include "Coin.h"
 #include <SFML/Graphics.hpp>
 
+extern Manager manager;
+
 void Map::print() {
 	for (int i = 0; i < HEIGHT_MAP; i++) {
 		for (int j = 0; j < WIDTH_MAP; j++) {
@@ -53,6 +55,10 @@ void Map::initialize(void)
 	Animation* baseGripL = new Animation("baseGripL", "simples_pimples.png", 417, 208, -16, 16, 0.003, 2);
 	Animation* _coin = new Animation("_coin", "Full_Coins.png", 0, 0, 16, 16, 0.003);
 
+	for (size_t i = 0; i < manager.list.size(); i++) {
+		manager.list[i]->kill();
+	}
+
 	for (int i = 0; i < HEIGHT_MAP; i++) {
 		for (int j = 0; j < WIDTH_MAP; j++) {
 			if (TileMap2[i][j] == 'h') {
@@ -68,9 +74,6 @@ void Map::initialize(void)
 				hero->add_animation(fallL);
 				hero->add_animation(base1);
 				hero->add_animation(base2);
-				std::cout << hero->x() << std::endl;
-				std::cout << hero->y() << std::endl;
-				//Observer* observer1 = new Observer(*hero);
 			}
 			if (TileMap2[i][j] == 'e') {
 				Creature* grip = new Enemy(j * 16, i * 16, 16, 16);

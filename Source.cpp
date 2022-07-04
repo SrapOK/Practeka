@@ -13,7 +13,7 @@ sf::RenderWindow window(sf::VideoMode::VideoMode(600, 600), "My window");
 Map mapee("Gameboy Tileset.png", "2.txt");
 sf::View view1;
 Manager manager;
-
+int SCORE = 0;
 
 
 
@@ -24,6 +24,14 @@ int main(int artv, char** argc)
     menu(window);
     mapee.initialize();
 
+    sf::Font font;
+    std::string string_score;
+    string_score = "Score: " + std::to_string(SCORE);
+    if (font.loadFromFile("Manrope-ExtraLight.ttf"));
+    sf::Text text_score("", font, 12);
+    text_score.setString(string_score);
+    text_score.setFillColor(sf::Color(200, 80, 50));
+    int score = 0;
 
     /*
     Animation* right = new Animation("right", "Walk.png", 0, 0, 16, 16);
@@ -80,17 +88,20 @@ int main(int artv, char** argc)
         }
 
         if (fl == 1) manager.update(_time);
-        //std::cout << _time << std::endl;
-        //if (hero->)
-        //getPlayerCoordinateForView(hero->x(), hero->y());
 
         window.setView(view1);
 
         window.clear();
+
         
         mapee.print();
         
         manager.display();
+        string_score = "Score: " + std::to_string(SCORE);
+        text_score.setString(string_score);
+        text_score.setPosition(view1.getCenter().x + 50, view1.getCenter().y - 94);
+        window.draw(text_score);
+
         
         window.display();
     }
