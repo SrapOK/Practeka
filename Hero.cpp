@@ -35,7 +35,8 @@ void Hero::move(void)
 
 Hero::Hero(int __x, int __y, int __width, int __height) : Creature(__x, __y, __width, __height)
 {
-    _hp = 3;
+    std::cout << "New: " << this << std::endl;
+    _hp = 1;
     int _x = __x;
     int _y = __y;
 }
@@ -109,8 +110,9 @@ int Hero::get_y() {
 
 void Hero::damage(void)
 {
-    if (_hp <= 0) {
+    if (_hp <= 0 && this->alive()) {
         kill();
+        std::cout << "Kill: " << this << std::endl;
         menu(window);
         mapee.initialize();
     }

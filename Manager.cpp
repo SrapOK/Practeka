@@ -7,6 +7,7 @@ void Manager::update(float _time)
 {
 	for (size_t i = 0; i < list.size(); i++) {
 		if (!list[i]->alive()) {
+			std::cout << list[i] << std::endl;
 			delete list[i];
 			list.erase(list.begin() + i);
 		}
