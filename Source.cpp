@@ -14,6 +14,8 @@ Map mapee("Gameboy Tileset.png", "2.txt");
 sf::View view1;
 Manager manager;
 int SCORE = 0;
+int SESSION_RECORD = 0;
+std::fstream record_file("record.txt", std::ios::app | std::ios::out | std::ios::in);
 
 
 
