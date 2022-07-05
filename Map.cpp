@@ -82,7 +82,9 @@ void Map::initialize(void)
 				grip->add_animation(baseGripL);
 			}
 			if (TileMap2[i][j] == 'm') {
+
 				//std::cout << "f";
+
 				Creature* coin = new Coin(j * 16, i * 16, 16, 16);
 				coin->add_animation(_coin);
 			}

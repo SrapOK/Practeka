@@ -40,7 +40,9 @@ void Hero::move(void)
         _dx = 0;
     }
     SCORE = _score;
+
     //std::cout << "_s " << _score << std::endl;
+
     getPlayerCoordinateForView(this->x(), this->y());
 }
 

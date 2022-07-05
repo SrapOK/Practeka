@@ -1,4 +1,9 @@
 #include "Menu.h"
+#include <fstream>
+
+extern int SCORE;
+extern int SESSION_RECORD;
+extern std::fstream record_file;
 
 void play1(float __time, sf::Sprite& _hero_memu, float& _hx) {
 	static float _current_frame;
@@ -19,7 +24,14 @@ void play2(float __time, sf::Sprite& _grip_memu, float& _gx) {
 
 
 
+
 int menu(sf::RenderWindow& window, int _tip) {
+  int input_record = 0;
+	record_file >> input_record;
+	std::cout << "A: " << input_record << std::endl;
+	//if (!record_file.good()) { input_record = 0; std::cout << "("; }
+	if (SCORE > SESSION_RECORD) SESSION_RECORD = SCORE;
+	if (input_record > SESSION_RECORD) SESSION_RECORD = input_record;
 	int _mapN;
 	_mapN = 0;
 	//sf::Text menuTexture1, menuTexture2, menuTexture3, aboutTexture, menuBackground;
@@ -30,6 +42,9 @@ int menu(sf::RenderWindow& window, int _tip) {
 	sf::Text EXIT("", font, 55);
 	sf::Text WIN("", font, 55);
 	sf::Text LOSS("", font, 55);
+  sf::Text RECORD("", font, 55);
+  RECORD.setString("Record: " + std::to_string(SESSION_RECORD));
+	RECORD.setPosition(260, 5);
 	PLAYm1.setString("PLAY MAP 1");
 	PLAYm1.setPosition(170, 130-45);
 	PLAYm2.setString("PLAY MAP 2");
@@ -38,6 +53,7 @@ int menu(sf::RenderWindow& window, int _tip) {
 	EXIT.setPosition(240, 130 * 3);
 	WIN.setString(" WIN");
 	WIN.setPosition(240, 130 * 2);
+
 	LOSS.setString("LOSS");
 	LOSS.setPosition(240, 130 * 2);
 	//sf::Sprite menu1(menuTexture1), menu2(menuTexture2), menu3(menuTexture3), about(aboutTexture), menuBg(menuBackground);
@@ -74,10 +90,12 @@ int menu(sf::RenderWindow& window, int _tip) {
 		while (window.pollEvent(event)) {
 			if (event.type == sf::Event::Closed) window.close();
 		}
+
 		PLAYm1.setFillColor(sf::Color(82, 127, 57));
 		PLAYm2.setFillColor(sf::Color(82, 127, 57));
 		EXIT.setFillColor(sf::Color(82, 127, 57));
 		WIN.setFillColor(sf::Color::Red);
+
 
 		menuNum = 0;
 		//window.clear(sf::Color(32, 70, 49));
@@ -96,7 +114,9 @@ int menu(sf::RenderWindow& window, int _tip) {
 
 
 		if (sf::IntRect(240, 130 * 3, 125, 55).contains(sf::Mouse::getPosition(window))) {
+
 			EXIT.setFillColor(sf::Color(174, 196, 64)); menuNum = 3; play2(time, grip_memu, gx); grip_memu.setPosition(gx, gy);
+
 		}
 		else {
 			grip_memu.setPosition(50, 525); gx = 50;
@@ -117,7 +137,17 @@ int menu(sf::RenderWindow& window, int _tip) {
 				std::cout << _mapN << std::endl;
 			}
 			//if (menuNum == 2) { window.draw(about); window.display(); while (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)); }
-			if (menuNum == 3) { window.close(); isMenu = false; }
+
+			if (menuNum == 3) { 
+				window.close();
+				isMenu = false;
+				record_file.close();
+				std::fstream record_file2("record.txt", std::ios::trunc | std::ios::out | std::ios::in);
+				record_file2 << SESSION_RECORD;
+				std::cout << "out: " << SESSION_RECORD;
+				record_file2.close();
+			}
+
 
 		}
 
@@ -131,8 +161,10 @@ int menu(sf::RenderWindow& window, int _tip) {
 		window.draw(hero_memu);
 		window.draw(grip_memu);
 		window.draw(EXIT);
+
 		window.draw(PLAYm1);
 		window.draw(PLAYm2);
+    window.draw(RECORD);
 		window.display();
 	}
 	if (_mapN == 1) { mapee.initialize(); std::cout << _mapN << std::endl;
@@ -143,18 +175,5 @@ int menu(sf::RenderWindow& window, int _tip) {
 	return _mapN;
 }
 
-/*void vin(sf::RenderWindow& window) {
-	sf::Font font;
-	font.loadFromFile("Manrope-ExtraLight.ttf");
-	sf::Text PLAY("", font, 55);
-	sf::Text EXET("", font, 55);
-	bool isMenu = 1;
-	int menuNum = 0;
-	while (isMenu) {
-		window.clear();
-		window.setView(window.getDefaultView());
-		window.clear(sf::Color(32, 70, 49));
-		
-		window.display();
-	}
-}*/
+
+}
