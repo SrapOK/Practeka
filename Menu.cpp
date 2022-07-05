@@ -24,11 +24,11 @@ void menu(sf::RenderWindow& window) {
 	sf::Font font;
 	font.loadFromFile("Manrope-ExtraLight.ttf");
 	sf::Text PLAY("", font, 55);
-	sf::Text EXET("", font, 55);
+	sf::Text EXIT("", font, 55);
 	PLAY.setString("PLAY");
 	PLAY.setPosition(240, 130);
-	EXET.setString("EXET");
-	EXET.setPosition(240, 130 * 3);
+	EXIT.setString("EXIT");
+	EXIT.setPosition(240, 130 * 3);
 	//sf::Sprite menu1(menuTexture1), menu2(menuTexture2), menu3(menuTexture3), about(aboutTexture), menuBg(menuBackground);
 	bool isMenu = 1;
 	int menuNum = 0;
@@ -64,7 +64,7 @@ void menu(sf::RenderWindow& window) {
 			if (event.type == sf::Event::Closed) window.close();
 		}
 		PLAY.setFillColor(sf::Color(82, 127, 57));
-		EXET.setFillColor(sf::Color(82, 127, 57));
+		EXIT.setFillColor(sf::Color(82, 127, 57));
 
 		menuNum = 0;
 		//window.clear(sf::Color(32, 70, 49));
@@ -77,7 +77,7 @@ void menu(sf::RenderWindow& window) {
 			hy = 25;
 		}
 		if (sf::IntRect(240, 130 * 3, 125, 55).contains(sf::Mouse::getPosition(window))) {
-			EXET.setFillColor(sf::Color(174, 196, 64)); menuNum = 2; play2(time, grip_memu, gx); grip_memu.setPosition(gx, gy);
+			EXIT.setFillColor(sf::Color(174, 196, 64)); menuNum = 2; play2(time, grip_memu, gx); grip_memu.setPosition(gx, gy);
 		}
 		else {
 			grip_memu.setPosition(50, 525); gx = 50;
@@ -100,7 +100,7 @@ void menu(sf::RenderWindow& window) {
 		window.clear(sf::Color(32, 70, 49));
 		window.draw(hero_memu);
 		window.draw(grip_memu);
-		window.draw(EXET);
+		window.draw(EXIT);
 		window.draw(PLAY);
 		window.display();
 	}
