@@ -79,54 +79,97 @@ const sf::Sprite& Creature::sprite(void) const
     return _sprite;
 }
 
+//////////////////////////////////////////collision не меняет карту///////////////////////////////
 
-
-bool Creature::collision_x()
+bool Creature::collision_x(int _mapN)
 {
+    //std::cout << _mapN << "collision_x" << std::endl;
     bool flag = false;
     for (int i = this->y() / _height; i < (this->y() + _height) / _height; i++) {
         for (int j = this->x() / _width; j < (this->x() + _width) / _width; j++) {
-            if (!(mapee.at(i, j) == ' ' || mapee.at(i, j) == 'h' || mapee.at(i, j) == 'e' || mapee.at(i, j) == 'm')) {
-                flag = true;
-                if (_dx > 0) this->x() = j * _width - _width;
-                if (_dx < 0)  this->x() = j * _width + _width;
-            }
-            if (mapee.at(i, j) == 'M') {
-                //_hp = 0;
-                kill();
-                menu(window, 3);
-                mapee.initialize();
-                //vin(window);
-                //damage();
-            }
-            if (mapee.at(i, j) == 's') {
-                damage();
-            }
+            if (_mapN == 1) {
+                if (!(mapee.at(i, j) == ' ' || mapee.at(i, j) == 'h' || mapee.at(i, j) == 'e' || mapee.at(i, j) == 'm')) {
+                    flag = true;
+                    if (_dx > 0) this->x() = j * _width - _width;
+                    if (_dx < 0)  this->x() = j * _width + _width;
+                }
+                if (mapee.at(i, j) == 'M') {
+                    //_hp = 0;
+                    kill();
+                    menu(window, 3);
+                    //mapee.initialize();
+                    //vin(window);
+                    //damage();
+                }
+                if (mapee.at(i, j) == 's') {
+                    damage();
+                }
 
+            }
+            if (_mapN == 2) {
+                if (!(mapee2.at(i, j) == ' ' || mapee2.at(i, j) == 'h' || mapee2.at(i, j) == 'e' || mapee2.at(i, j) == 'm')) {
+                    flag = true;
+                    if (_dx > 0) this->x() = j * _width - _width;
+                    if (_dx < 0)  this->x() = j * _width + _width;
+                }
+                if (mapee2.at(i, j) == 'M') {
+                    //_hp = 0;
+                    kill();
+                    menu(window, 3);
+                    //mapee.initialize();
+                    //vin(window);
+                    //damage();
+                }
+                if (mapee2.at(i, j) == 's') {
+                    damage();
+                }
+
+            }
         }
     }
     return flag;
 }
-bool Creature::collision_y()
+bool Creature::collision_y(int _mapN)
 {
+    //std::cout << _mapN << "collision_y" << std::endl;
     bool flag = false;
     for (int i = this->y() / _height; i < (this->y() + _height) / _height; i++) {
         for (int j = this->x() / _width; j < (this->x() + _width) / _width; j++) {
-            if (!(mapee.at(i, j) == ' ' || mapee.at(i, j) == 'h' || mapee.at(i, j) == 'e' || mapee.at(i, j) == 'm')) {
-                flag = true;
-                if (_dy > 0) { this->y() = i * _height - _height;  _dy = 0;   _on_ground = true; _up_is_pressed = true; }
-                if (_dy < 0) { this->y() = i * _height + _height;  _dy = 0; }
+            if (_mapN == 1) {
+                if (!(mapee.at(i, j) == ' ' || mapee.at(i, j) == 'h' || mapee.at(i, j) == 'e' || mapee.at(i, j) == 'm')) {
+                    flag = true;
+                    if (_dy > 0) { this->y() = i * _height - _height;  _dy = 0;   _on_ground = true; _up_is_pressed = true; }
+                    if (_dy < 0) { this->y() = i * _height + _height;  _dy = 0; }
+                }
+                if (mapee.at(i, j) == 'M') {
+                    //_hp = 0;
+                    kill();
+                    menu(window, 3);
+                    //mapee.initialize();
+                    //vin(window);
+                    //damage();
+                }
+                if (mapee.at(i, j) == 's') {
+                    damage();
+                }
             }
-            if (mapee.at(i, j) == 'M') {
-                //_hp = 0;
-                kill();
-                menu(window, 3);
-                mapee.initialize();
-                //vin(window);
-                //damage();
-            }
-            if (mapee.at(i, j) == 's') {
-                damage();
+            if (_mapN == 2) {
+                if (!(mapee2.at(i, j) == ' ' || mapee2.at(i, j) == 'h' || mapee2.at(i, j) == 'e' || mapee2.at(i, j) == 'm')) {
+                    flag = true;
+                    if (_dy > 0) { this->y() = i * _height - _height;  _dy = 0;   _on_ground = true; _up_is_pressed = true; }
+                    if (_dy < 0) { this->y() = i * _height + _height;  _dy = 0; }
+                }
+                if (mapee2.at(i, j) == 'M') {
+                    //_hp = 0;
+                    kill();
+                    menu(window, 3);
+                    //mapee.initialize();
+                    //vin(window);
+                    //damage();
+                }
+                if (mapee2.at(i, j) == 's') {
+                    damage();
+                }
             }
         }
     }

@@ -12,6 +12,7 @@
 
 extern sf::RenderWindow window;
 extern Map mapee;
+extern Map mapee2;
 
 class Creature
 {
@@ -19,8 +20,8 @@ protected:
 	bool _alive;
 	bool _up_is_pressed;
 	bool _on_ground;
-	bool collision_x();
-	bool collision_y();
+	bool collision_x(int _mapN);
+	bool collision_y(int _mapN);
 	//void collision_obj();
 	std::string _name;
 	float _dx, _dy;

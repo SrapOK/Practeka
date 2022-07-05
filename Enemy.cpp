@@ -1,4 +1,5 @@
 #include "Enemy.h"
+extern int mapN;
 
 Enemy::Enemy(int __x, int __y, int __width, int __height) : Creature(__x, __y, __width, __height)
 {
@@ -22,13 +23,13 @@ void Enemy::get_command(float time)
 void Enemy::move(void)
 {
 	this->x() += _dx;
-	if (collision_x()) {
+	if (collision_x(mapN)) {
 		direction *= -1;
 	}
 
 	this->y() += _dy;
 	_on_ground = false;
-	collision_y();
+	collision_y(mapN);
 
 
 	_sprite.move(this->x(), this->y());

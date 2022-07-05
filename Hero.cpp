@@ -4,15 +4,16 @@
 
 extern Manager manager;
 extern int SCORE;
+extern int mapN;
 
 void Hero::move(void)
 {
     this->x() += _dx;
-    collision_x();
+    collision_x(mapN);
 
     this->y() += _dy;
     _on_ground = false;
-    collision_y();
+    collision_y(mapN);
     for (int i = 0; i < manager.list.size(); i++) {
         if (this != manager.list[i]) {
             float tmp_x = manager.list[i]->x();
@@ -39,7 +40,7 @@ void Hero::move(void)
         _dx = 0;
     }
     SCORE = _score;
-    std::cout << "_s " << _score << std::endl;
+    //std::cout << "_s " << _score << std::endl;
     getPlayerCoordinateForView(this->x(), this->y());
 }
 
@@ -123,12 +124,12 @@ void Hero::damage(void)
     if (_hp <= 0 && this->alive()) {
         kill();
         menu(window, 2);
-        mapee.initialize();
+        //mapee.initialize();
     }
     else {
         _hp--;
         this->x() = 80;
-        this->y() = 320;
+        this->y() = 320-16*2;
     }
 }
 

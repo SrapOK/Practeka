@@ -1,0 +1,25 @@
+YVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV0
+2                                 -----                                                                                                                        1
+2                                 -                                                                                                                            1
+2                                 -m                                                                                                                           1
+2                                 -----                                                                                                                        1
+2                                     -    s                    B   e  B  s   B  e   B                                                                         1
+2                                     ---------------     --------------------------------                                                                     1
+2                                                   --                                   --                                                                    1
+2                                                    --                                   --                                                                   1
+2                                                     --                                 m --                                                                  1
+2                                                      --                         XXXXXXXXXXXX  X                                                              1
+2                                                       --    B    e   B         XXXXXXXXXXXX   X                                                 M            1
+2                                                        -----------------      XXXX            X                                                 -            1
+2                                                                              XXXXX  XXXXXXXXXXX                                                -0            1
+2                                                                             XXXXXX  XXXXXXX                                                   -00            1
+2                                                                            XXXXXXX  XXXXXXX                                                  -000            1
+2                                                                           XXXXXXXX  XXXXXXX                                                 -0000            1
+2                                                    ------  -      -      XXXXXXXXX  XXXXXXX                        --   -                  -00000            1
+2   h        GT      m        GT   ---  ---   m   -       -  -ssssss-     XXXXXXXXXX                              --       -                -000000            1
+L____________JLT   ------    GJ2             ---          -  --------    XXXXXXXXXXX               -----       -            -              -0000000            1
+000000000000000LT           GJ02                          -  --------   XXXX  XXXXXX  XXXXXXXXXXX         ----               -            -00000000            1
+0000000000000000LT   m     GJ002ssssssssssssssssssssssssssGT    m      XXXXXm         XXXXXXXsssssssssssssssssssssssssssssssss-   s  s   -000000000ssssssssssss1
+00000000000000000T_________J000L__________________________JL_____________________________________________________________________________00000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
