@@ -8,7 +8,7 @@
 #include <SFML/Window.hpp>
 #include "Animation.h"
 #include "Map.h"
-
+#include "Menu.h"
 
 extern sf::RenderWindow window;
 extern Map mapee;

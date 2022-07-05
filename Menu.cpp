@@ -1,4 +1,9 @@
 #include "Menu.h"
+#include <fstream>
+
+extern int SCORE;
+extern int SESSION_RECORD;
+extern std::fstream record_file;
 
 void play1(float __time, sf::Sprite& _hero_memu, float& _hx) {
 	static float _current_frame;
@@ -19,16 +24,33 @@ void play2(float __time, sf::Sprite& _grip_memu, float& _gx) {
 
 
 
-void menu(sf::RenderWindow& window) {
+void menu(sf::RenderWindow& window, int _tip) {
+	
+	int input_record = 0;
+	record_file >> input_record;
+	std::cout << "A: " << input_record << std::endl;
+	//if (!record_file.good()) { input_record = 0; std::cout << "("; }
+	if (SCORE > SESSION_RECORD) SESSION_RECORD = SCORE;
+	if (input_record > SESSION_RECORD) SESSION_RECORD = input_record;
+
 	//sf::Text menuTexture1, menuTexture2, menuTexture3, aboutTexture, menuBackground;
 	sf::Font font;
 	font.loadFromFile("Manrope-ExtraLight.ttf");
 	sf::Text PLAY("", font, 55);
 	sf::Text EXIT("", font, 55);
+	sf::Text VIN("", font, 55);
+	sf::Text LOSS("", font, 55);
+	sf::Text RECORD("", font, 55);
+	RECORD.setString("Record: " + std::to_string(SESSION_RECORD));
+	RECORD.setPosition(260, 5);
 	PLAY.setString("PLAY");
 	PLAY.setPosition(240, 130);
 	EXIT.setString("EXIT");
 	EXIT.setPosition(240, 130 * 3);
+	VIN.setString("  VIN");
+	VIN.setPosition(240, 130 * 2);
+	LOSS.setString("LOSS");
+	LOSS.setPosition(240, 130 * 2);
 	//sf::Sprite menu1(menuTexture1), menu2(menuTexture2), menu3(menuTexture3), about(aboutTexture), menuBg(menuBackground);
 	bool isMenu = 1;
 	int menuNum = 0;
@@ -65,6 +87,7 @@ void menu(sf::RenderWindow& window) {
 		}
 		PLAY.setFillColor(sf::Color(82, 127, 57));
 		EXIT.setFillColor(sf::Color(82, 127, 57));
+		VIN.setFillColor(sf::Color::Red);
 
 		menuNum = 0;
 		//window.clear(sf::Color(32, 70, 49));
@@ -89,7 +112,15 @@ void menu(sf::RenderWindow& window) {
 		{
 			if (menuNum == 1) isMenu = false;
 			//if (menuNum == 2) { window.draw(about); window.display(); while (!sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)); }
-			if (menuNum == 2) { window.close(); isMenu = false; }
+			if (menuNum == 2) { 
+				window.close();
+				isMenu = false;
+				record_file.close();
+				std::fstream record_file2("record.txt", std::ios::trunc | std::ios::out | std::ios::in);
+				record_file2 << SESSION_RECORD;
+				std::cout << "out: " << SESSION_RECORD;
+				record_file2.close();
+			}
 
 		}
 
@@ -98,10 +129,14 @@ void menu(sf::RenderWindow& window) {
 		window.clear();
 		window.setView(window.getDefaultView());
 		window.clear(sf::Color(32, 70, 49));
+		if (_tip == 3)window.draw(VIN);
+		if (_tip == 2)window.draw(LOSS);
 		window.draw(hero_memu);
 		window.draw(grip_memu);
 		window.draw(EXIT);
 		window.draw(PLAY);
+		window.draw(RECORD);
 		window.display();
 	}
+
 }

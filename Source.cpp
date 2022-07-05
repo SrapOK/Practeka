@@ -14,6 +14,8 @@ Map mapee("Gameboy Tileset.png", "2.txt");
 sf::View view1;
 Manager manager;
 int SCORE = 0;
+int SESSION_RECORD = 0;
+std::fstream record_file("record.txt", std::ios::app | std::ios::out | std::ios::in);
 
 
 
@@ -21,7 +23,7 @@ int main(int artv, char** argc)
 {
     //sf::RenderWindow window(sf::VideoMode(1376, 768), "Kychka-pc.ru 31");
     //mapee.initialize();
-    menu(window);
+    menu(window, 1);
     mapee.initialize();
 
     sf::Font font;

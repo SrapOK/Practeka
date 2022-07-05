@@ -20,7 +20,8 @@ void Hero::move(void)
             int tmp_width = manager.list[i]->width();
             int tmp_height = manager.list[i]->height();
             if (box.intersects(sf::FloatRect(tmp_x, tmp_y, tmp_width, tmp_height)) && _dy <= 0) {
-                if (manager.list[i] == dynamic_cast<Coin*>(manager.list[i])) { manager.list[i]->damage(); _score += 10;}
+                if (manager.list[i] == dynamic_cast<Coin*>(manager.list[i])) { manager.list[i]->damage(); _score += 10;
+                }
                 else {
                     damage();
                 }
@@ -38,7 +39,6 @@ void Hero::move(void)
         _dx = 0;
     }
     SCORE = _score;
-    std::cout << "_s " << _score << std::endl;
     getPlayerCoordinateForView(this->x(), this->y());
 }
 
@@ -121,7 +121,7 @@ void Hero::damage(void)
 {
     if (_hp <= 0 && this->alive()) {
         kill();
-        menu(window);
+        menu(window, 2);
         mapee.initialize();
     }
     else {
