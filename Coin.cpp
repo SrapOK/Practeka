@@ -1,5 +1,5 @@
 #include "Coin.h"
-
+extern int mapN;
 
 void Coin::get_command(float time)
 {
@@ -13,6 +13,6 @@ void Coin::move()
 
 	this->y() += _dy;
 	_on_ground = false;
-	collision_y();
+	collision_y(mapN);
 	_sprite.move(this->x(), this->y());
 }

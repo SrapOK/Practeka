@@ -8,9 +8,13 @@
 #include "interface.h"
 #include <sstream>
 
-sf::RenderWindow window(sf::VideoMode::VideoMode(600, 600), "My window");
+//std::string mapN;
+int mapN;
+sf::RenderWindow window(sf::VideoMode::VideoMode(600, 600), "Kolobock");
 
 Map mapee("Gameboy Tileset.png", "2.txt");
+Map mapee2("Gameboy Tileset.png", "3.txt");
+
 sf::View view1;
 Manager manager;
 int SCORE = 0;
@@ -21,10 +25,11 @@ std::fstream record_file("record.txt", std::ios::app | std::ios::out | std::ios:
 
 int main(int artv, char** argc)
 {
+    
     //sf::RenderWindow window(sf::VideoMode(1376, 768), "Kychka-pc.ru 31");
     //mapee.initialize();
-    menu(window, 1);
-    mapee.initialize();
+    mapN = menu(window, 1);
+    std::cout << mapN << std::endl;
 
     sf::Font font;
     std::string string_score;
@@ -95,8 +100,8 @@ int main(int artv, char** argc)
 
         window.clear();
 
-        
-        mapee.print();
+        if (mapN == 1) { mapee.print(); }
+        if (mapN == 2) { mapee2.print(); }
         
         manager.display();
         string_score = "Score: " + std::to_string(SCORE);
