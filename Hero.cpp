@@ -2,6 +2,7 @@
 #include "Menu.h"
 #include "Coin.h"
 
+extern Menu menu;
 extern Manager manager;
 extern int SCORE;
 extern int mapN;
@@ -125,7 +126,7 @@ void Hero::damage(void)
 {
     if (_hp <= 0 && this->alive()) {
         kill();
-        menu(window, 2);
+        menu.menu(window, 2);
         //mapee.initialize();
     }
     else {

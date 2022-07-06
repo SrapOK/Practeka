@@ -6,6 +6,7 @@
 #include "Enemy.h"
 
 extern Manager manager;
+extern Menu menu;
 
 void Creature::damage(void) {
     _hp--;
@@ -84,10 +85,12 @@ const sf::Sprite& Creature::sprite(void) const
 bool Creature::collision_x(int _mapN)
 {
     //std::cout << _mapN << "collision_x" << std::endl;
+    //std::cout << this->y() / _height << " " << (this->y() + _height) / _height << std::endl;
     bool flag = false;
     for (int i = this->y() / _height; i < (this->y() + _height) / _height; i++) {
         for (int j = this->x() / _width; j < (this->x() + _width) / _width; j++) {
-            if (_mapN == 1) {
+            //std::cout << i << " " << j << std::endl;
+            if (menu.get_mapN() == 1) {
                 if (!(mapee.at(i, j) == ' ' || mapee.at(i, j) == 'h' || mapee.at(i, j) == 'e' || mapee.at(i, j) == 'm')) {
                     flag = true;
                     if (_dx > 0) this->x() = j * _width - _width;
@@ -96,7 +99,7 @@ bool Creature::collision_x(int _mapN)
                 if (mapee.at(i, j) == 'M') {
                     //_hp = 0;
                     kill();
-                    menu(window, 3);
+                    menu.menu(window, 3);
                     //mapee.initialize();
                     //vin(window);
                     //damage();
@@ -106,7 +109,7 @@ bool Creature::collision_x(int _mapN)
                 }
 
             }
-            if (_mapN == 2) {
+            if (menu.get_mapN() == 2) {
                 if (!(mapee2.at(i, j) == ' ' || mapee2.at(i, j) == 'h' || mapee2.at(i, j) == 'e' || mapee2.at(i, j) == 'm')) {
                     flag = true;
                     if (_dx > 0) this->x() = j * _width - _width;
@@ -115,7 +118,7 @@ bool Creature::collision_x(int _mapN)
                 if (mapee2.at(i, j) == 'M') {
                     //_hp = 0;
                     kill();
-                    menu(window, 3);
+                    menu.menu(window, 3);
                     //mapee.initialize();
                     //vin(window);
                     //damage();
@@ -132,10 +135,11 @@ bool Creature::collision_x(int _mapN)
 bool Creature::collision_y(int _mapN)
 {
     //std::cout << _mapN << "collision_y" << std::endl;
+    //std::cout << this->y() / _height << " " << (this->y() + _height) / _height << std::endl;
     bool flag = false;
     for (int i = this->y() / _height; i < (this->y() + _height) / _height; i++) {
         for (int j = this->x() / _width; j < (this->x() + _width) / _width; j++) {
-            if (_mapN == 1) {
+            if (menu.get_mapN() == 1) {
                 if (!(mapee.at(i, j) == ' ' || mapee.at(i, j) == 'h' || mapee.at(i, j) == 'e' || mapee.at(i, j) == 'm')) {
                     flag = true;
                     if (_dy > 0) { this->y() = i * _height - _height;  _dy = 0;   _on_ground = true; _up_is_pressed = true; }
@@ -144,7 +148,7 @@ bool Creature::collision_y(int _mapN)
                 if (mapee.at(i, j) == 'M') {
                     //_hp = 0;
                     kill();
-                    menu(window, 3);
+                    menu.menu(window, 3);
                     //mapee.initialize();
                     //vin(window);
                     //damage();
@@ -153,7 +157,7 @@ bool Creature::collision_y(int _mapN)
                     damage();
                 }
             }
-            if (_mapN == 2) {
+            if (menu.get_mapN() == 2) {
                 if (!(mapee2.at(i, j) == ' ' || mapee2.at(i, j) == 'h' || mapee2.at(i, j) == 'e' || mapee2.at(i, j) == 'm')) {
                     flag = true;
                     if (_dy > 0) { this->y() = i * _height - _height;  _dy = 0;   _on_ground = true; _up_is_pressed = true; }
@@ -162,7 +166,7 @@ bool Creature::collision_y(int _mapN)
                 if (mapee2.at(i, j) == 'M') {
                     //_hp = 0;
                     kill();
-                    menu(window, 3);
+                    menu.menu(window, 3);
                     //mapee.initialize();
                     //vin(window);
                     //damage();

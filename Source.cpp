@@ -14,6 +14,7 @@ sf::RenderWindow window(sf::VideoMode::VideoMode(600, 600), "Kolobock");
 
 Map mapee("Gameboy Tileset.png", "2.txt");
 Map mapee2("Gameboy Tileset.png", "3.txt");
+Menu menu;
 
 sf::View view1;
 Manager manager;
@@ -26,9 +27,8 @@ std::fstream record_file("record.txt", std::ios::app | std::ios::out | std::ios:
 int main(int artv, char** argc)
 {
     
-    //sf::RenderWindow window(sf::VideoMode(1376, 768), "Kychka-pc.ru 31");
     //mapee.initialize();
-    mapN = menu(window, 1);
+    mapN = menu.menu(window, 1);
     std::cout << mapN << std::endl;
 
     sf::Font font;
@@ -40,29 +40,7 @@ int main(int artv, char** argc)
     text_score.setFillColor(sf::Color(200, 80, 50));
     int score = 0;
 
-    /*
-    Animation* right = new Animation("right", "Walk.png", 0, 0, 16, 16);
-    Animation* left = new Animation("left", "Walk.png", 0, 0, -16, 16);
-    Animation* up = new Animation("up", "Jump.png", 0, 0, 16, 16);
-    Animation* fall = new Animation("fall", "Fall.png", 0, 0, 16, 16);
-    Animation* base = new Animation("base", "base.png", 0, 0, 16, 16, 0.003);
-    hero->add_animation(right);
-    hero->add_animation(left);
-    hero->add_animation(up);
-    hero->add_animation(fall);
-    hero->add_animation(base);
-    hero->set_default_sprite(*base);
-
-    Animation* baseGripR = new Animation("baseGripR", "simples_pimples.png", 417, 208, 16, 16, 0.003, 2);
-    Animation* baseGripL = new Animation("baseGripL", "simples_pimples.png", 417, 208, -16, 16, 0.003, 2);
-    grip->add_animation(baseGripR);
-    grip->add_animation(baseGripL);
     
-    
-
-    interface st();
-    //hp.setPosition(-300, -300);
-    */
     
 
     view1.reset(sf::FloatRect(0, 0, 200, 200));
@@ -99,9 +77,9 @@ int main(int artv, char** argc)
         window.setView(view1);
 
         window.clear();
-
-        if (mapN == 1) { mapee.print(); }
-        if (mapN == 2) { mapee2.print(); }
+        //std::cout << menu.get_mapN() << std::endl;
+        if (menu.get_mapN() == 1) { mapee.print(); }
+        if (menu.get_mapN() == 2) { mapee2.print(); }
         
         manager.display();
         string_score = "Score: " + std::to_string(SCORE);

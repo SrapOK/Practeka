@@ -11,13 +11,6 @@ void Map::print() {
 	for (int i = 0; i < HEIGHT_MAP; i++) {
 		for (int j = 0; j < WIDTH_MAP; j++) {
 			s_map.setTextureRect(sf::IntRect(189, 128, 16, 16));
-			/*
-			if (choice_Map == 1) {
-				if (TileMap[i][j] == ' ')  s_map.setTextureRect(sf::IntRect(0, 0, 32, 32));
-				if (TileMap[i][j] == 's')  s_map.setTextureRect(sf::IntRect(32, 0, 32, 32));
-				if ((TileMap[i][j] == '0')) s_map.setTextureRect(sf::IntRect(64, 0, 32, 32));
-			}
-			*/
 			if (TileMap2[i][j] == 'J')  s_map.setTextureRect(sf::IntRect(32, 176, 16, 16));
 			if (TileMap2[i][j] == 'M')  s_map.setTextureRect(sf::IntRect(64, 192, 16, 16));
 			if (TileMap2[i][j] == 'F')  s_map.setTextureRect(sf::IntRect(16, 48, 16, 16));

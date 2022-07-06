@@ -5,7 +5,7 @@ extern int SCORE;
 extern int SESSION_RECORD;
 extern std::fstream record_file;
 
-void play1(float __time, sf::Sprite& _hero_memu, float& _hx) {
+void Menu::play1(float __time, sf::Sprite& _hero_memu, float& _hx) {
 	static float _current_frame;
 	_current_frame += 0.00002 * __time;
 	if (_current_frame > 4) _current_frame = 0;
@@ -13,7 +13,7 @@ void play1(float __time, sf::Sprite& _hero_memu, float& _hx) {
 	_hx = _hx + 0.0002 * __time;
 }
 
-void play2(float __time, sf::Sprite& _grip_memu, float& _gx) {
+void Menu::play2(float __time, sf::Sprite& _grip_memu, float& _gx) {
 	static float _current_frame;
 	_current_frame += 0.000004 * __time;
 	if (_current_frame > 2) _current_frame = 0;
@@ -25,7 +25,7 @@ void play2(float __time, sf::Sprite& _grip_memu, float& _gx) {
 
 
 
-int menu(sf::RenderWindow& window, int _tip) {
+int Menu::menu(sf::RenderWindow& window, int _tip) {
   int input_record = 0;
 	record_file >> input_record;
 	std::cout << "A: " << input_record << std::endl;
@@ -171,9 +171,11 @@ int menu(sf::RenderWindow& window, int _tip) {
 	}
 	if (_mapN == 2) { mapee2.initialize(); std::cout << _mapN << std::endl;
 	}
+	__mapN = _mapN;
 	//mapee.initialize();
 	return _mapN;
 }
 
-
+int Menu::get_mapN() {
+	return __mapN;
 }
