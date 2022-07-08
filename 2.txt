@@ -3,7 +3,7 @@ YVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 2     F                                                                                                                                                        0
 2     F                                                                                                                                                        0
 2     F                                                                                                                                                        0
-2     F                                                            B      B  e    B        m                                                                   0
+2     F                                                            B  e  B  e    B        m                                                                    0
 2     F                                                       ------------------------------------                                                             0
 2     F                                                                                                                                                        0
 2     F                                                    ---                                                                                                 0
@@ -13,7 +13,7 @@ YVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 2     F                                                             -----    m -                     ---                             -00                       0
 2     F                                                             --      ----                                                    -000                       0
 2    ZZZ                                                            ------     -                                                   -0000                       0
-2    ZZZ                                        B   e    B          --m                                                           -00000                       0
+2    ZZZ                                        B   e    B          --m                               m                           -00000                       0
 2    ZZZ                               ------ G________________T    XXXXXXXXXXXXXXXX   G__T           ----GT                     -000000                       0
 2                                  --         10000000000000000L__T    XXXXXXXXXXX    GJ002               1LT                   -0000000                       0
 2                  ---        --              10000000000000000000L_T               G_J0002               10LT                 -00000000                       0

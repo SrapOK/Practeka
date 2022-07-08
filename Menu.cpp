@@ -42,9 +42,9 @@ int Menu::menu(sf::RenderWindow& window, int _tip) {
 	sf::Text EXIT("", font, 55);
 	sf::Text WIN("", font, 55);
 	sf::Text LOSS("", font, 55);
-  sf::Text RECORD("", font, 55);
-  RECORD.setString("Record: " + std::to_string(SESSION_RECORD));
-	RECORD.setPosition(260, 5);
+    sf::Text RECORD("", font, 55);
+    RECORD.setString("Record: " + std::to_string(SESSION_RECORD));
+	RECORD.setPosition(180, 130 * 3 - 65);
 	PLAYm1.setString("PLAY MAP 1");
 	PLAYm1.setPosition(170, 130-45);
 	PLAYm2.setString("PLAY MAP 2");
@@ -93,6 +93,8 @@ int Menu::menu(sf::RenderWindow& window, int _tip) {
 
 		PLAYm1.setFillColor(sf::Color(82, 127, 57));
 		PLAYm2.setFillColor(sf::Color(82, 127, 57));
+		RECORD.setFillColor(sf::Color(182, 227, 157));
+		LOSS.setFillColor(sf::Color(228, 85, 69));
 		EXIT.setFillColor(sf::Color(82, 127, 57));
 		WIN.setFillColor(sf::Color::Red);
 

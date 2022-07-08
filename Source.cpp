@@ -37,7 +37,7 @@ int main(int artv, char** argc)
     if (font.loadFromFile("Manrope-ExtraLight.ttf"));
     sf::Text text_score("", font, 12);
     text_score.setString(string_score);
-    text_score.setFillColor(sf::Color(200, 80, 50));
+    text_score.setFillColor(sf::Color(182, 227, 157));
     int score = 0;
 
     
